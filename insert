@@ -1,0 +1,48 @@
+
+ ALTER TABLE tipo_denucia RENAME tipo_denuncia;
+select * from tipo_denuncia
+ insert into tipo_denuncia(descricao_denuncia) values('Queixa Simples');
+  insert into tipo_denuncia(descricao_denuncia) values('Burla');
+   insert into tipo_denuncia(descricao_denuncia) values('Furto/Roubo');
+    insert into tipo_denuncia(descricao_denuncia) values('Agressão ao Ambiente');
+     insert into tipo_denuncia(descricao_denuncia) values('Tafico de Pessoas');
+      insert into tipo_denuncia(descricao_denuncia) values('Ofenda à Integridade Física');
+       insert into tipo_denuncia(descricao_denuncia) values('Violência Doméstica');
+          insert into tipo_denuncia(descricao_denuncia) values('Homicídio');
+            insert into tipo_denuncia(descricao_denuncia) values('Maus Tratos');
+ select* from provincia
+ insert into provincia(nome_provincia)values('Huíla');
+  insert into provincia(nome_provincia)values('Luanda');
+    insert into provincia(nome_provincia)values('Cuando Cubango');
+        insert into provincia(nome_provincia)values('Namibe');
+ 
+ select * from municipio;
+ insert into municipio(nome_municipio,id_provincia) values('Lubango',1);
+  insert into municipio(nome_municipio,id_provincia) values('Humpata',1);
+    insert into municipio(nome_municipio,id_provincia) values('Chibía',1);
+      insert into municipio(nome_municipio,id_provincia) values('Matala',1);
+
+insert into estado(descricao_estado) values('Resolvido');
+insert into estado(descricao_estado) values('Não Resolvido');
+insert into estado(descricao_estado) values('Pendente');
+ 
+ use denuncias
+ 
+ insert into denuncia(id_municipio,	tipo_denuncia,	descricao_denuncia,data_registro_denuncia,	nome_cidadao,telefone_cidadao, 	email_cidadao,	data_ocorrencia) values(?,?,?,now(),?,?,?,?)
+ 
+select * from denuncia
+descr
+select * from estado
+
+insert into  tipo_funcionario(descricao_tipo_funcionario) values('Normal');
+insert into  tipo_funcionario(descricao_tipo_funcionario) values('Admin');
+
+insert into funcionario(	nome_funcionario,	sobrenome_funcionario,	
+telefone_funcionario,	email_funcionario,	senha_funcionario,	Sexo,	tipo_funcionario) values(
+'Eliezer','Antonio','924033375','eliezer@gmail.com','1111','M',1)
+
+select * from funcionario
+describe despacho
+insert into despacho(id_funcionario,id_denucia,data_despacho,id_estado)values(1,1,now(),1)
+se
+i

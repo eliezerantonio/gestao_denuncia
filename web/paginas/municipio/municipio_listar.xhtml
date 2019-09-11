@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <a href="../../WEB-INF/templates/modelo_administracao.xhtml"></a>
+    <body>
+        <ui:composition template="../../WEB-INF/templates/modelo_administracao.xhtml">
+
+            <ui:define name="west">
+             
+
+
+            </ui:define>
+
+            <ui:define name="center">
+                <p:dataTable value="#{provinciaMB.provincias}" var="item"  paginator="true" cellSeparator="true" rows="6" editable="false" paginatorPosition="bottom" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                    <p:column filterBy="#{item.codigoProvincia}">
+                        <f:facet name="header" >
+                            <p:outputLabel value="Codigo"/>
+                        </f:facet>
+
+                        <h:outputText value="#{item.codigoProvincia}"/>
+                    </p:column>
+                    <p:column >
+                        <f:facet name="header">
+                            <p:outputLabel value="Nome"/>
+                        </f:facet>
+
+
+                        <h:outputText value="#{item.descricaoDenucia}"/>
+                    </p:column>
+                      <p:column >
+                        <f:facet name="header">
+                            <p:outputLabel value="provincia"/>
+                        </f:facet>
+
+
+                        <h:outputText value="#{item.descricaoDenucia}"/>
+                    </p:column>
+
+
+                   
+
+
+                    <p:column style="width: 100px; text-align: center" width="160">
+                        <f:facet name="header">
+                            <p:outputLabel value="Operações"/>
+                        </f:facet>
+                        
+                        
+                   
+                             
+                        
+                        
+                        
+
+
+                        
+                    </p:column>
+
+                    <f:facet name="footer">
+                        Total: () 
+                    </f:facet>                           
+                </p:dataTable>
+
+               
+
+
+                <f:facet name="footer">
+                    <h:outputText value="Portal de denuncias" />
+                </f:facet>
+
+                <!--inicio do dialogo editar-->
+
+     
+               <!--Inicio do dialog ver-->
+            <p:dialog id="ver" widgetVar="dialogoVer" showEffect="clip" hideEffect="blind" resizable="false">
+                <h:form>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Código: "/>
+                        <h:outputText value="#{provinciaMB.provincia.codigoProvincia}"/>
+                        <p:outputLabel value="Nome: "/>
+                        <h:outputText value="#{provinciaMB.provincia.descricaoDenucia}"/>
+                   
+
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

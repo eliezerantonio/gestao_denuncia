@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Pagina Inicial</title>
+    </h:head>
+    <h:body>
+        <ui:include src="../../WEB-INF/menus/menu_administrativo.xhtml"/>
+        <br/><br/><br/><br/><br/><br/><br/>
+
+
+        <center>
+            <b:row>
+                <h:form>
+
+
+                    <b:column span="4">       <br/>
+
+                        <b:link ajax="false" outcome="/paginas/despacho/despacho_cadastrar" >
+                            <img src="../../imagen/datos2.png" alt="" style="width: 60%" />
+
+                            <h2 style="text-transform:uppercase">Despachar</h2>
+
+                        </b:link>
+
+                    </b:column>
+                        
+                    
+
+                    <b:column span="4">  
+                        <!-- 
+                        <b:link ajax="false"  outcome="/paginas/despacho/despacho_listar_1">-->
+                        <b:link ajax="false"  outcome="/paginas/despacho/despacho_listar">
+                            <img src="../../imagen/pesquisar.png" alt="" style="width:54%;" /><br/>
+
+                            <h2 style="text-transform: uppercase">Consultar</h2>
+                        </b:link>
+                    </b:column>
+                 
+                    <b:column span="4">  
+                           <b/>
+                        <!-- 
+                        <b:link ajax="false"  outcome="/paginas/despacho/despacho_listar_1">-->
+                        <b:link ajax="false"  outcome="/paginas/despacho/despacho_listar">
+                            <img src="../../imagen/recolecion-de-datos-1.png" alt="" style="width:55%;" /><br/>
+                      <h2 style="text-transform: uppercase">Relatorio</h2>
+                        </b:link>
+                    </b:column>
+                </h:form>
+            </b:row>
+        </center>
+    </h:body>
+</html>
+

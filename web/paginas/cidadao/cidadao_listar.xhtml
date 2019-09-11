@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <a href="../../WEB-INF/templates/modelo_administracao.xhtml"></a>
+    <body>
+        <ui:composition template="../../WEB-INF/templates/modelo_administracao.xhtml">
+
+            <ui:define name="west">
+                <!-- <img src="../../imagen/c1.png" alt=""/> -->
+                <p:graphicImage url="../../imagen/c1.png" name="c1" library="imagen" ><img src="../../imagen/c1.png" alt=""/>
+
+                </p:graphicImage>
+
+
+
+            </ui:define>
+
+            <ui:define name="center">
+                <p:dataTable value="#{cidadaoMB.cidadaos}" var="item"  paginator="true" cellSeparator="true" rows="6" editable="false" paginatorPosition="bottom" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                    <p:column  >
+                        <f:facet name="header">
+                            <p:outputLabel value="Codigo"/>
+                        </f:facet>
+
+                        <h:outputText value="#{item.codigoCidadao}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.nomeCidadao}">
+                        <f:facet name="header">
+                            <p:outputLabel value="Nome"/>
+                        </f:facet>
+
+
+                        <h:outputText value="#{item.nomeCidadao}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <p:outputLabel value="Sobrenome"/>
+                        </f:facet>
+
+                        <h:outputText value="#{item.sobrenomeCidadao}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <p:outputLabel value="E-mail"/>
+                        </f:facet>
+
+                        <h:outputText value="#{item.emailCidadao}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <p:outputLabel value="Telefone"/>
+                        </f:facet>
+
+                        <h:outputText value="#{item.telefoneCidadao}"/>
+                    </p:column>
+
+                    <p:column >
+                        <f:facet name="header">
+                            <p:outputLabel value="Data Nascimento"/>
+                        </f:facet>
+
+                        <h:outputText value="#{item.dataNascimentoCidadao}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                    </p:column>
+
+
+
+
+
+
+                    <p:column style="width: 100px; text-align: center" width="160">
+                        <f:facet name="header">
+                            <p:outputLabel value="Operações"/>
+                        </f:facet>
+
+
+                        <p:commandButton  icon="ui-icon-trash" action="#{cidadaoMB.delete()}">
+                            <f:setPropertyActionListener target="#{cidadaoMB.cidadao}" value="#{item}"/>
+                        </p:commandButton>
+
+                        <p:commandButton icon="ui-icon-pencil" update=":editar" oncomplete="PF('dialogoEditar').show();">
+                            <f:setPropertyActionListener target="#{cidadaoMB.cidadao}" value="#{item}"/>
+                        </p:commandButton>
+                        <p:commandButton icon="ui-icon-zoomin" update=":ver" oncomplete="PF('dialogoVer').show();">
+                            <f:setPropertyActionListener target="#{cidadaoMB.cidadao}" value="#{item}"/>
+                        </p:commandButton>     
+
+
+
+
+
+                    </p:column>
+
+                    <f:facet name="footer">
+                        Total: () 
+                    </f:facet>                           
+                </p:dataTable>
+
+                <p:commandButton icon="ui-icon-pencil" value="Guardar"  oncomplete="PF('dialogo_guardar').show();" />
+
+
+           
+
+
+                <f:facet name="footer">
+                    <h:outputText value="Portal de denuncias" />
+                </f:facet>
+
+                <!--inicio do dialogo editar-->
+
+                <p:dialog id="editar" widgetVar="dialogoEditar" showEffect="clip" hideEffect="blind" style="width: 400px; height: 150px" resizable="false">
+                 
+                    <h:form enctype="multipart/form-data">
+                        <h:inputHidden value="#{cidadaoMB.cidadao.codigoCidadao}"/>
+                        <p:panelGrid columns="2">
+                            <h:panelGrid columns="2">
+                                <p:outputLabel value="Nome" style="margin-left: 0%"/>
+                                <p:inputText value="#{cidadaoMB.cidadao.nomeCidadao}"/>
+                                <p:outputLabel value="Sobrenome" style="margin-left: 0%"/>
+                                <p:inputText value="#{cidadaoMB.cidadao.sobrenomeCidadao}"/>
+                                <p:outputLabel value="Telefone" style="margin-left: 0%"/>
+                                <p:inputText value="#{cidadaoMB.cidadao.telefoneCidadao}"/>
+                                <p:outputLabel value="E-mail" style="margin-left: 0%"/>
+                                <p:inputText value="#{cidadaoMB.cidadao.emailCidadao}"/>
+                                <p:outputLabel value="Data Nascimento" style="margin-left: 0%"/>
+                                <p:calendar id="dataCidadao" value="#{cidadaoMB.cidadao.dataNascimentoCidadao}" pattern="dd/MM/yyyy" title="DataContacto" locale="pt" mode="popup"
+                                            showOn="button" navigator="true" />
+                                <p:outputLabel value="Nome Usuario" style="margin-left: 0%"/>
+                                <p:inputText value="#{cidadaoMB.cidadao.usuarioCidadao}"/>
+                                <p:outputLabel value="Senha cidadao" style="margin-left: 0%"/>
+                                <p:inputText value="#{cidadaoMB.cidadao.senhaCidadao}"/>
+
+
+                            </h:panelGrid>
+                        </p:panelGrid>
+                        <br></br>
+                        <p:commandButton value="Alterar" action="#{cidadaoMB.edit(evt)}" ajax="false"/>
+                    </h:form>
+                </p:dialog>
+                <!--fim do dialogo editar-->
+
+
+                <!--fim do dialogo editar-->
+                <p:dialog id="guardar" header="Guardar Cidadao" widgetVar="dialogo_guardar" showEffect="explode" hideEffect="explode" width="700" height="350" resizable="false">
+                   <p:growl for="dialogo_guardar" />
+                    <h:form enctype="multipart/form-data">
+
+                        <h:panelGrid  columns="2">
+                            <h:panelGroup>
+                                <h:panelGrid columns="2">
+                                    <p:outputLabel value="Nome" style="margin-left: 0%"/>
+                                    <p:inputText value="#{cidadaoMB.cidadao.nomeCidadao}"/>
+                                    <p:outputLabel value="Sobrenome" style="margin-left: 0%"/>
+                                    <p:inputText value="#{cidadaoMB.cidadao.sobrenomeCidadao}"/>
+                                    <p:outputLabel value="Telefone" style="margin-left: 0%"/>
+                                    <p:inputText value="#{cidadaoMB.cidadao.telefoneCidadao}"/>
+                                    <p:outputLabel value="E-mail" style="margin-left: 0%"/>
+                                    <p:inputText value="#{cidadaoMB.cidadao.emailCidadao}"/>
+                                    <p:outputLabel value="Data Nascimento" style="margin-left: 0%"/>
+                                    <p:calendar id="dataCidadao" value="#{cidadaoMB.cidadao.dataNascimentoCidadao}" pattern="dd/MM/yyyy" title="DataContacto" locale="pt" mode="popup"
+                                                showOn="button" navigator="true" />
+
+                                    <p:outputLabel value="Nome Usuario" style="margin-left: 0%"/>
+                                    <p:inputText value="#{cidadaoMB.cidadao.usuarioCidadao}"/>
+                                    <p:outputLabel value="Senha cidadao" style="margin-left: 0%"/>
+                                    <p:inputText value="#{cidadaoMB.cidadao.senhaCidadao}"/>
+
+
+
+                                    <p:outputLabel value="Município:" />
+                                    <p:selectOneMenu style="width:200px" id="municipios" filter="true" filterMatchMode="startsWith" label="Município:" value="#{cidadaoMB.cidadao.municipio}" required="true" converter="municipioConverter">
+                                        <f:selectItem itemLabel="-Seleccione o município-" value="#{null}" noSelectionOption="true"/>
+                                        <f:selectItems value="#{cidadaoMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
+                                    </p:selectOneMenu>
+
+                                </h:panelGrid>
+                            </h:panelGroup>
+                        </h:panelGrid>   
+
+
+
+                        <p:commandButton  action="#{cidadaoMB.guardar(evt)}"  value="Guardar" ajax="false"/>
+                    </h:form>
+                </p:dialog>
+                <!-- FIm do dialogo guardar-->
+
+
+                <!--Inicio do dialog ver-->
+                <p:dialog id="ver" widgetVar="dialogoVer" showEffect="clip" hideEffect="blind" resizable="false">
+                    
+                    <h:form>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Código: "/>
+                            <h:outputText value="#{cidadaoMB.cidadao.codigoCidadao}"/>
+                            <p:outputLabel value="Nome: "/>
+                            <h:outputText value="#{cidadaoMB.cidadao.nomeCidadao}"/>
+                            <p:outputLabel value="Sobrenome: "/>
+                            <h:outputText value="#{cidadaoMB.cidadao.sobrenomeCidadao}"/>
+                            <p:outputLabel value="Telefone: "/>
+                            <h:outputText value="#{cidadaoMB.cidadao.telefoneCidadao}"/>
+                            <p:outputLabel value="Email: "/>
+                            <h:outputText value="#{cidadaoMB.cidadao.emailCidadao}"/>
+                            <p:outputLabel value="Data Nascimento: "/>
+                            <h:outputText value="#{cidadaoMB.cidadao.dataNascimentoCidadao}" title="DataContacto" >
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                            <p:outputLabel value="Data de cadastro"/>
+                            <h:outputText value="#{cidadaoMB.cidadao.dataCadastro}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                            <p:outputLabel value="Municipio"/>
+                            <h:outputText value="#{cidadaoMB.cidadao.municipio}"/>
+
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

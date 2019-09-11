@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Iniciar Sesão</title>
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+
+    </h:head>
+    <h:body style="padding-top: 100px; background-color: lightslategray">
+        <b:container>
+            <h:form styleClass="form-signin" prependId="false" id="form">
+                <p:messages id="growl" closable="true"  />
+              
+                <h2 class="form-signin-heading"></h2>
+                <h4>Usuario</h4>
+                <b:inputText id="username" value="#{loginMb.funcionario.usuarioFuncionario}" placeholder="" >
+                    <f:facet name="prepend">
+                        <b:icon name="user"/>
+                    </f:facet>
+                </b:inputText>
+                <h4>Senha</h4>
+                <b:inputText id="password" value="#{loginMb.funcionario.senhaFuncionario}" placeholder="" type="password">
+
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+                <b:selectBooleanCheckbox value="true" caption="Relembrar-me"/>
+
+                <b:commandButton look="primary btn-block" value="entrar" icon="log-in" size="lg" action="#{loginMb.entrar(evt)}"
+                                 actionListener="#{loginMb.entrar(ev)}"   ajax="false"  /> 
+                
+
+            </h:form>
+
+  <b:growl  id="growlSpecific" placementFrom="top" show-detail="true"
+                         global-only="false"
+                         show-summary="true" allow-dismiss="true"
+                         animation-enter="animated bounceInDown"
+                         animation-exit="animated flipOutX"
+                         escape="true" />
+
+        </b:container>
+
+
+
+    </h:body>
+</html>
+

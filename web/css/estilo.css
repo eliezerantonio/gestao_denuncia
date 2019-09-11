@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28/ago/2019, 10:16:04
+    Author     : eliezer
+*/
+
+.menu-opcoes ul {
+    font-size: 15px;
+
+}
+.menu-opcoes a {
+    color: #000;
+    text-decoration: none;
+}
+.menu-opcoes{
+    text-align: center;
+}
+
+body {
+    color: #333333;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+}
+
+
+.menu-opcoes ul li { /*Metendo-os horizontal*/
+    display: inline;
+    margin-left: 20px; /*espaco entre os links */
+}
+#pna {
+    width: 5%;
+    height: 5%;  
+}
+.pnaD{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+      
+}
+.login{
+    text-align: center;
+}
+.botaoGuardar{
+    text-align: left;
+    text-transform: uppercase;
+}
+#botao{
+     text-transform: uppercase;
+}

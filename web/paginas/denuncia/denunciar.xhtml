@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title> 
+            Portal de Denuncias</title>
+        <link rel="stylesheet" href="../../css/estilo.css"/>
+    </h:head>
+    <h:body>
+        <ui:include src="../../WEB-INF/menus/menu_base_publico.xhtml"/>
+
+
+
+
+
+
+
+
+        <p:panel footer="Portal de Denuncias">
+
+            <h2> Faça a sua Denuncia!!</h2>
+            <b:row>
+                <b:form>
+
+                    <b:column span="3">       
+                        <b:panel title="Try" collapsible="false" look="default">
+                        </b:panel>
+
+
+                    </b:column>
+
+                    <b:column span="9">  
+                        <b:panel title="Publico" collapsible="false"  >
+
+
+                            <b:form inline="true" >
+
+                                <b:formGroup>
+                                    <b:inputText placeholder="Text" span="7" label="  Nome" colMd="6"/>
+
+                                    <b:form>
+                                        <b:row>
+                                            <b:inputText placeholder="Text" span="5" label="Email" colMd="6"/>      
+
+                                            <b:inputText placeholder="Text"   span="5" label="Telefone" colMd="6"/>    
+
+                                        </b:row>
+                                    </b:form>
+
+                                    <b:form>
+                                        <b:row >
+
+                                            <b:column col-sm="6">
+                                                <b:selectOneMenu  id="municipioss"  label="Tipo:" value="#{cidadaoMB.cidadao.municipio}" required="true" converter="municipioConverter">
+                                                    <f:selectItem itemLabel="Tipo de Denuncia" value="#{null}" noSelectionOption="true"/>
+                                                    <f:selectItems value="#{cidadaoMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
+                                                </b:selectOneMenu>   
+
+                                                <b:selectOneMenu  id="municipios"  label="Município:" value="#{cidadaoMB.cidadao.municipio}" required="true" converter="municipioConverter">
+                                                    <f:selectItem itemLabel=" Municipio" value="#{null}" noSelectionOption="true"/>
+                                                    <f:selectItems value="#{cidadaoMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
+                                                </b:selectOneMenu>  
+
+                                            </b:column>
+                                        </b:row>
+                                    </b:form>
+                                    <b:form>
+                                        <b:inputTextarea placeholder="Digite aqui a descricao da sua denuncia" label="Descrição">
+                                            <f:ajax event="keyup" render="label"/>
+                                        </b:inputTextarea>
+                                        <b:label text="" id="label"/>
+                                    </b:form>
+                                </b:formGroup>
+                            </b:form>
+                            <b:form  >
+
+
+
+
+                            </b:form>
+
+
+                        </b:panel>
+
+                    </b:column>
+
+                </b:form>
+            </b:row>          
+
+
+
+
+
+
+
+        </p:panel> 
+
+        <br/>
+    </h:body>
+</html>
+
+

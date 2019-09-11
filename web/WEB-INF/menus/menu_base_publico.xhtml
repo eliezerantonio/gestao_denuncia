@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="css/estilo.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <b:navBar  brand=""  brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
+                <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
+                    <b:navLink value="Home" outcome="/index"></b:navLink>
+                    <b:navLink value="Consultar Denuncia" href="paginas/denuncia/denuncia_consultar.jsf"></b:navLink>
+                    <b:navLink value="Fazer Denuncia" href="paginas/denuncia/denunciar.jsf"></b:navLink>
+                    <b:dropMenu value="Ajuda" contentDisabled="#{navBarBean.dropMenuDisabled}">
+                        <b:navLink value="Sobre" href="#" ></b:navLink>
+                        <b:navLink value="###" href="#"></b:navLink>
+                        <b:navLink value="Iniciar Sessao" href="paginas/funcionario/funcionario_login.jsf"></b:navLink>
+                          
+                        <b:navLink value="despacho" href="paginas/despacho/despacho_listar.jsf"></b:navLink>
+                        <b:navLink value="responsiva" href="paginas/despacho/denunciar_1.jsf"></b:navLink>
+                        <b:navLink></b:navLink>
+                        <b:navLink header="Nav header"></b:navLink>
+                        
+                    </b:dropMenu>
+                </b:navbarLinks>
+            </b:navBar>
+            <f:facet name="right">
+                <p:commandLink ajax="false"  action="/paginas/funcionario/funcionario_login.jsf"> Iniciar Sessão</p:commandLink>
+            </f:facet>
+
+
+
+
+        </h:form>
+
+
+
+    </h:body>
+</html>
+
