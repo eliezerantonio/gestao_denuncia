@@ -28,61 +28,63 @@
                 <b:form>
 
                     <b:column span="3">       
-                        <b:panel title="Try" collapsible="false" look="default">
+                        <b:panel title="" collapsible="false" look="default">
                         </b:panel>
 
 
                     </b:column>
 
                     <b:column span="9">  
-                        <b:panel title="Publico" collapsible="false"  >
+                        <b:panel title="" collapsible="false"  >
 
 
-                            <b:form inline="true" >
+                            <b:form inline="true">
 
                                 <b:formGroup>
-                                    <b:inputText placeholder="Text" span="7" label="  Nome" colMd="6"/>
+
 
                                     <b:form>
                                         <b:row>
-                                            <b:inputText placeholder="Text" span="5" label="Email" colMd="6"/>      
+                                            <b:inputText placeholder="Digite aqui o seu Nome" span="8" label="Nome" colMd="7"/>
+                                            <b:inputText placeholder="Digite o seu E-mail" type="e-mail" span="4" label="Email" colMd="8"/>
 
-                                            <b:inputText placeholder="Text"   span="5" label="Telefone" colMd="6"/>    
 
+
+                                            <b:inputText placeholder="Digite seu numero de telefone"   span="4" label="Telefone" colMd="6"/>   
+                                        
+                                                        <b:selectOneMenu   span="4" id="municipioss"  label="Tipo:" value="#{cidadaoMB.cidadao.municipio}" required="true" converter="municipioConverter">
+                                                            <f:selectItem itemLabel="Tipo de Denuncia" value="#{null}" noSelectionOption="true"/>
+                                                            <f:selectItems value="#{cidadaoMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
+                                                        </b:selectOneMenu>   
+
+                                                        <b:selectOneMenu   span="4" id="municipios"  label="Município:" value="#{cidadaoMB.cidadao.municipio}" required="true" converter="municipioConverter">
+                                                            <f:selectItem itemLabel=" Municipio" value="#{null}" noSelectionOption="true"/>
+                                                            <f:selectItems value="#{cidadaoMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
+                                                        </b:selectOneMenu>  
+
+                                                
+                                             
+
+                                                
+                                               
+                                           
                                         </b:row>
                                     </b:form>
 
-                                    <b:form>
-                                        <b:row >
 
-                                            <b:column col-sm="6">
-                                                <b:selectOneMenu  id="municipioss"  label="Tipo:" value="#{cidadaoMB.cidadao.municipio}" required="true" converter="municipioConverter">
-                                                    <f:selectItem itemLabel="Tipo de Denuncia" value="#{null}" noSelectionOption="true"/>
-                                                    <f:selectItems value="#{cidadaoMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
-                                                </b:selectOneMenu>   
-
-                                                <b:selectOneMenu  id="municipios"  label="Município:" value="#{cidadaoMB.cidadao.municipio}" required="true" converter="municipioConverter">
-                                                    <f:selectItem itemLabel=" Municipio" value="#{null}" noSelectionOption="true"/>
-                                                    <f:selectItems value="#{cidadaoMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
-                                                </b:selectOneMenu>  
-
-                                            </b:column>
-                                        </b:row>
-                                    </b:form>
-                                    <b:form>
-                                        <b:inputTextarea placeholder="Digite aqui a descricao da sua denuncia" label="Descrição">
-                                            <f:ajax event="keyup" render="label"/>
-                                        </b:inputTextarea>
-                                        <b:label text="" id="label"/>
-                                    </b:form>
                                 </b:formGroup>
                             </b:form>
-                            <b:form  >
+
+                        
 
 
-
-
+                            <b:form>
+                                <b:inputTextarea placeholder="Digite aqui a descricao da sua denuncia" label="Descrição">
+                                    <f:ajax event="keyup" render="label"/>
+                                </b:inputTextarea>
+                                <b:label text="" id="label"/>
                             </b:form>
+
 
 
                         </b:panel>
