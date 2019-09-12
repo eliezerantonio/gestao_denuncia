@@ -8,16 +8,18 @@
     <h:head>
         <title>Facelet Title</title>
         <link rel="stylesheet" href="css/estilo.css"/>
+        
+        
     </h:head>
     <h:body>
         <h:form>
 
             <b:navBar  brand=""  brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
                 <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
-                    <b:navLink value="Home" outcome="/index"></b:navLink>
-                    <b:navLink value="Consultar Denuncia" href="paginas/denuncia/denuncia_consultar.jsf"></b:navLink>
-                    <b:navLink value="Fazer Denuncia" href="paginas/denuncia/denunciar.jsf"></b:navLink>
-                    <b:dropMenu value="Ajuda" contentDisabled="#{navBarBean.dropMenuDisabled}">
+                    <b:navLink value="Home " iconAwesome="fa-home" outcome="/index"></b:navLink>
+                    <b:navLink value="Consultar Denuncia" iconAwesome="fa-neuter" href="paginas/denuncia/denuncia_consultar.jsf"></b:navLink>
+                    <b:navLink value="Fazer Denuncia" iconAwesome="fa-comment" href="paginas/denuncia/denunciar.jsf"></b:navLink>
+                    <b:dropMenu value="Ajuda" iconAwesome="fa-info " contentDisabled="#{navBarBean.dropMenuDisabled}">
                         <b:navLink value="Sobre" href="#" ></b:navLink>
                         <b:navLink value="###" href="#"></b:navLink>
                         <b:navLink value="Iniciar Sessao" href="paginas/funcionario/funcionario_login.jsf"></b:navLink>

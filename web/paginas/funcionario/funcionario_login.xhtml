@@ -22,7 +22,7 @@
                 <p:messages id="growl" closable="true"  />
               
                 <h2 class="form-signin-heading"></h2>
-                <h4>Usuario</h4>
+                <h4>Utilizador</h4>
                 <b:inputText id="username" value="#{loginMb.funcionario.usuarioFuncionario}" placeholder="" >
                     <f:facet name="prepend">
                         <b:icon name="user"/>
@@ -39,8 +39,7 @@
 
                 <b:commandButton look="primary btn-block" value="entrar" icon="log-in" size="lg" action="#{loginMb.entrar(evt)}"
                                  actionListener="#{loginMb.entrar(ev)}"   ajax="false"  /> 
-                
-
+              
             </h:form>
 
   <b:growl  id="growlSpecific" placementFrom="top" show-detail="true"
