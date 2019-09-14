@@ -16,17 +16,13 @@
         <b:row>
             <b:form>
 
-                <b:column span="3">       
-                    <b:panel title="Try" collapsible="false" look="default">
-                        <img src="../../imagen/depositphotos_115690172-stock-illustration-businessman-profile-colorful-avatar-over.jpg" style="width: 70%" alt=""/>
-                        <b:commandButton icon="ui-icon-pencil" value="Guardar"  oncomplete="PF('dialogo_guardar').show();" />
-                    </b:panel>
+                <b:column span="1">       
 
 
                 </b:column>
 
-                <b:column span="9">  
-                    <b:panel title="Lista de Denuncias!"  >
+                <b:column span="10">  
+                    <b:panel title=""  look="primary" >
 
                         <b:dataTable value="#{denunciaMB.denuncias}"
                                      var="item"
@@ -35,7 +31,7 @@
                                      custom-options="dom: 'lfrtiBp',buttons: ['colvis','copy','csv',{extend: 'excelHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},{extend: 'pdfHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},'print']">
                             <f:facet name="header">
                                 <tr>
-                                    <th colspan="6"> <h2 style="text-align: center;">Lista de Denuncias</h2></th>
+                                    <th colspan="7"> <h2 style="text-align: center;">Lista de Denuncias</h2></th>
                                 </tr>
                                 <tr>
                                     <th>Codigo</th>
@@ -44,15 +40,16 @@
                                     <th>Telefone Cidadao</th>
                                     <th>Data de Cadastro</th>
                                     <th>Tipo Denuncia</th>
+                                    <th>Operacões</th>
+                                   
                                 </tr>
                             </f:facet>
-                            <b:dataTableColumn value="#{item.denuncia.codigoDenuncia}" />
-                            <b:dataTableColumn value="#{item.denuncia.nomeCidadaoDenuncia}" />
-                            <b:dataTableColumn value="#{item.denuncia.codigoDenuncia}"  order="asc" />
-                            <b:dataTableColumn value="#{item.denuncia.emailCidadaoDenuncia}" />
-                            <b:dataTableColumn value="#{item.denuncia.telefoneCidadaoDenuncia}"/>
-                            <b:dataTableColumn value="#{item.denuncia.tipoDenuncia}"/>
-                            <b:dataTableColumn value="#{item.denuncia.dataRegistoDenuncia}"/>
+                            <b:dataTableColumn value="#{item.codigoDenuncia}" />
+                            <b:dataTableColumn value="#{item.nomeCidadaoDenuncia}" />
+                            <b:dataTableColumn value="#{item.emailCidadaoDenuncia}" />
+                            <b:dataTableColumn value="#{item.telefoneCidadaoDenuncia}"/>
+                            <b:dataTableColumn value="#{item.tipoDenuncia.descricaoDenuncia}"/>
+                            <b:dataTableColumn value="#{item.dataRegistoDenuncia}"/>
                             <b:dataTableColumn>
 
                                 <b:commandButton icon-awesome="fa-trash" tooltip="Eliminar" action="#{despachoMB.delete()}">
@@ -70,7 +67,10 @@
                     </b:panel>
 
                 </b:column>
+                <b:column span="1">       
 
+
+                </b:column>
             </b:form>
         </b:row>          
     </h:body>

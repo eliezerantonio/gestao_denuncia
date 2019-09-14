@@ -8,8 +8,8 @@
     <h:head>
         <title>Facelet Title</title>
         <link rel="stylesheet" href="css/estilo.css"/>
-        
-        
+
+
     </h:head>
     <h:body>
         <h:form>
@@ -17,16 +17,17 @@
             <b:navBar  brand=""  brandHref="#" id="dropMenuExample" contentDisabled="#{navBarBean.navBarDisabled}">
                 <b:navbarLinks contentDisabled="#{navBarBean.navBarLinksDisabled}">
                     <b:navLink value="Home " iconAwesome="fa-home" outcome="/index"></b:navLink>
-                    <b:navLink value="Consultar Denuncia" iconAwesome="fa-neuter" outcome ="paginas/denuncia/denuncia_consultar"></b:navLink>
-                    <b:navLink value="Fazer Denuncia" iconAwesome="fa-comment" outcome ="paginas/denuncia/denunciar"></b:navLink>
+                    <b:navLink value="Consultar Denuncia" iconAwesome="fa-neuter" outcome ="/paginas/denuncia/denuncia_consultar"></b:navLink>
+                    <b:navLink value="Fazer Denuncia" iconAwesome="fa-comment" outcome ="/paginas/denuncia/denunciar"></b:navLink>
                     <b:dropMenu value="Ajuda" iconAwesome="fa-info " contentDisabled="#{navBarBean.dropMenuDisabled}">
                         <b:navLink value="Sobre" href="#" ></b:navLink>
                         <b:navLink value="###" href="#"></b:navLink>
-                        <b:navLink value="Iniciar Sessao" outcome ="paginas/funcionario/funcionario_login"></b:navLink>
-                          
-                        <b:navLink value="despacho" outcome ="paginas/despacho/despacho_listar"></b:navLink>
-                        <b:navLink value="responsiva" outcome ="paginas/despacho/denunciar_1"></b:navLink>
-                        <b:navLink value="responsiva" outcome ="paginas/denuncia/denuncia_consultar"></b:navLink>
+                        <b:navLink value="Iniciar Sessao" outcome ="/paginas/funcionario/funcionario_login"></b:navLink>
+                        <b:navLink value="AtalhoDenunciaListar" outcome="/paginas/denuncia/denuncia_listar"></b:navLink>
+                        <b:navLink value="AtalhoDespachoListar" outcome="/paginas/despacho/despacho_listar"></b:navLink>
+                        <b:navLink value="despacho" outcome ="/paginas/despacho/despacho_listar"></b:navLink>
+                        <b:navLink value="responsiva" outcome ="/paginas/despacho/denunciar_1"></b:navLink>
+                        <b:navLink value="responsiva" outcome ="/paginas/denuncia/denuncia_consultar"></b:navLink>
                         <b:navLink></b:navLink>
                         <b:navLink header="Nav header"></b:navLink>
                     </b:dropMenu>

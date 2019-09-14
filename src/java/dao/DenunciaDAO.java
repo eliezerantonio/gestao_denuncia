@@ -114,17 +114,17 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
     private void popularComDados(Denuncia denuncia, ResultSet rs) {
         try {
             denuncia.setCodigoDenuncia(rs.getInt(1));
-            denuncia.setNomeCidadaoDenuncia(rs.getString(2));
-            denuncia.setEmailCidadaoDenuncia(rs.getString(8));
-            denuncia.setTelefoneCidadaoDenuncia(rs.getString(7));
+            denuncia.setNomeCidadaoDenuncia(rs.getString("nome_cidadao"));
+            denuncia.setEmailCidadaoDenuncia(rs.getString("email_cidadao"));
+            denuncia.setTelefoneCidadaoDenuncia(rs.getString("telefone_cidadao"));
             Municipio municipio = new Municipio();
-            municipio.setNomeMunicipio(rs.getString(2));
+            municipio.setNomeMunicipio(rs.getString(5));
             denuncia.setMunicipio(municipio);
             TipoDenuncia tipoDenuncia = new TipoDenuncia();
-            tipoDenuncia.setDescricaoDenuncia(rs.getString(2));
+            tipoDenuncia.setDescricaoDenuncia(rs.getString(6));
             denuncia.setTipoDenuncia(tipoDenuncia);
-            denuncia.setDataRegistoDenuncia(rs.getDate(5));
-            denuncia.setDataOcorrenciaDenuncia(rs.getDate(9));
+            denuncia.setDataRegistoDenuncia(rs.getDate("data_registro_denuncia"));
+            denuncia.setDataOcorrenciaDenuncia(rs.getDate(8));
 
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: *****" + ex.getLocalizedMessage());

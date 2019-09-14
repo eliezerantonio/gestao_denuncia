@@ -16,17 +16,14 @@
         <b:row>
             <b:form>
 
-                <b:column span="3">       
-                    <b:panel title="Try" collapsible="false" look="default">
-                        <img src="../../imagen/depositphotos_115690172-stock-illustration-businessman-profile-colorful-avatar-over.jpg" style="width: 70%" alt=""/>
-                        <b:commandButton icon="ui-icon-pencil" value="Guardar"  oncomplete="PF('dialogo_guardar').show();" />
-                    </b:panel>
+                <b:column span="1">       
+
 
 
                 </b:column>
 
-                <b:column span="9">  
-                    <b:panel title="Despacho Administração!"  >
+                <b:column span="10">  
+                    <b:panel title="Despacho Administração!"  look="primary" >
 
                         <b:dataTable value="#{despachoMB.despachos}"
                                      var="item"
@@ -68,6 +65,12 @@
                     </b:panel>
 
                 </b:column>
+                <b:column span="1">       
+
+
+
+                </b:column>
+
 
             </b:form>
         </b:row>          
