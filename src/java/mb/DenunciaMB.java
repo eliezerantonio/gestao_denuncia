@@ -43,12 +43,10 @@ public class DenunciaMB {
     }
 
     public String save(ActionEvent evt) {
-
-       if( denunciaDAO.save(denuncia)){
-           System.out.println(" Sucesso");
-       } else{
-           System.out.println("Err ao salvar");
-       }
+        System.out.println("BBBBBB");
+       denunciaDAO.save(denuncia);
+        System.out.println("AAAA");
+     
            
        
 

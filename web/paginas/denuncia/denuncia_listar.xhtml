@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <head>
+        <title>Lista de Despacho</title>
+    </head>
+
+    <h:body>
+
+        <ui:include src="../../WEB-INF/menus/menu_administrativo.xhtml"/>
+        <b:row>
+            <b:form>
+
+                <b:column span="3">       
+                    <b:panel title="Try" collapsible="false" look="default">
+                        <img src="../../imagen/depositphotos_115690172-stock-illustration-businessman-profile-colorful-avatar-over.jpg" style="width: 70%" alt=""/>
+                        <b:commandButton icon="ui-icon-pencil" value="Guardar"  oncomplete="PF('dialogo_guardar').show();" />
+                    </b:panel>
+
+
+                </b:column>
+
+                <b:column span="9">  
+                    <b:panel title="Despacho Administração!"  >
+
+                        <b:dataTable value="#{despachoMB.despachos}"
+                                     var="item"
+                                     page-length="5"
+                                     page-length-menu="5,10,20"
+                                     custom-options="dom: 'lfrtiBp',buttons: ['colvis','copy','csv',{extend: 'excelHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},{extend: 'pdfHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},'print']">
+                            <f:facet name="header">
+                                <tr>
+                                    <th colspan="6"> <h2 style="text-align: center;">Lista de Despachos</h2></th>
+                                </tr>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Nome Funcionario</th>
+                                    <th>Codigo Denuncia</th>
+                                    <th>Estado</th>
+                                    <th>Data de Cadastro</th>
+                                    <th>Operacões</th>
+                                </tr>
+                            </f:facet>
+                            <b:dataTableColumn value="#{item.codigoDespacho}" />
+                            <b:dataTableColumn value="#{item.funcionario.nomeFuncionario}" />
+                            <b:dataTableColumn value="#{item.denuncia.codigoDenuncia}"  order="asc" />
+                            <b:dataTableColumn value="#{item.estado.descricaoEstado}" />
+                            <b:dataTableColumn value="#{item.dataDespacho}"/>
+                            <b:dataTableColumn>
+
+                                <b:commandButton icon-awesome="fa-trash" tooltip="Eliminar" action="#{despachoMB.delete()}">
+                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
+                                </b:commandButton>
+                                |
+                                <b:commandButton icon-awesome="fa-pencil " tooltip="Editar" >
+                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
+                                </b:commandButton>
+                                |  <b:commandButton icon-awesome="fa-eye " tooltip="Ver detalhes" oncomplete="PF('dialogoVer').show();" >
+                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
+                                </b:commandButton> 
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:panel>
+
+                </b:column>
+
+            </b:form>
+        </b:row>          
+    </h:body>
+</html>

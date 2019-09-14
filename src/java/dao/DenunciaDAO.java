@@ -22,7 +22,7 @@ import util.Conexao;
  */
 public class DenunciaDAO implements GenericoDAO<Denuncia> {
 
-    private static final String INSERIR = "insert into denuncia(id_municipio,	tipo_denuncia,	descricao_denuncia,data_registro_denuncia,	nome_cidadao,telefone_cidadao, 	email_cidadao,	data_ocorrencia) values(?,?,?,now(),?,?,?,now()\n"
+    private static final String INSERIR = "insert into denuncia(id_municipio,tipo_denuncia,descricao_denuncia,data_registro_denuncia,	nome_cidadao,telefone_cidadao, 	email_cidadao,	data_ocorrencia) values(?,?,?,now(),?,?,?,now()\n"
             + " ";
     private static final String BUSCAR_POR_CODIGO = "select * from denuncia where id_denuncia =?";
     private static final String BUSCAR_TODOS = "select * from denuncia ";
@@ -45,9 +45,9 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
             ps.setString(6, denuncia.getTelefoneCidadaoDenuncia());
             ps.setString(7, denuncia.getDescricaoDenuncia());
             //     ps.setDate(6, new java.sql.Date(denuncia.getDataOcorrenciaDenuncia().getTime()));
-            ps.execute();
+            ps.executeQuery();
         } catch (SQLException e) {
-            
+
             System.out.println("Erro ao denunciar " + e.getLocalizedMessage());
         }
         return false;

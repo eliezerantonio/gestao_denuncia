@@ -29,8 +29,8 @@
 
                     <b:column span="3">       
                         <b:panel title="" collapsible="false" look="primary">
-         Faça ja a sua denuncia e receba as solucoes por e-mail                   
-                            
+                            Faça ja a sua denuncia e receba as solucoes por e-mail                   
+
                         </b:panel>
 
 
@@ -46,7 +46,7 @@
 
 
                                     <b:form>
-                                        
+
                                         <b:row>
                                             <b:inputText placeholder="Digite aqui o seu Nome" value="#{denunciaMB.denuncia.nomeCidadaoDenuncia}" span="8" label="Nome" colMd="7"/> 
                                             <b:inputText placeholder="Digite o seu E-mail" value="#{denunciaMB.denuncia.emailCidadaoDenuncia}" type="e-mail" span="4" label="Email" colMd="8"/>
@@ -73,7 +73,10 @@
 
                                         <h:panelGrid style="float: right;" columns="2">
 
-                                            <b:commandButton look="primary btn-block" value="Denunciar"  size="lg" action="#{denunciaMB.save(evt)}" actionListener="#{denunciaMB.save(evt)}" 
+                                            <b:commandButton look="primary btn-block" value="Denunciar"  size="lg"  action="#{denunciaMB.save(evt)}" 
+                                                             ajax="false"  /> 
+
+                                            <b:commandButton look="primary btn-block" value="Cancelar"  size="lg"  type="reset" 
                                                              ajax="false"  /> 
                                         </h:panelGrid>
 
