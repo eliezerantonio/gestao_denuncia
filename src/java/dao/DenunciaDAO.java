@@ -22,7 +22,7 @@ import util.Conexao;
  */
 public class DenunciaDAO implements GenericoDAO<Denuncia> {
 
-    private static final String INSERIR = "insert into denuncia(id_municipio,	tipo_denuncia,	descricao_denuncia,data_registro_denuncia,	nome_cidadao,telefone_cidadao, 	email_cidadao,	data_ocorrencia) values(?,?,?,now(),?,?,?,?)\n"
+    private static final String INSERIR = "insert into denuncia(id_municipio,	tipo_denuncia,	descricao_denuncia,data_registro_denuncia,	nome_cidadao,telefone_cidadao, 	email_cidadao,	data_ocorrencia) values(?,?,?,now(),?,?,?,now()\n"
             + " ";
     private static final String BUSCAR_POR_CODIGO = "select * from denuncia where id_denuncia =?";
     private static final String BUSCAR_TODOS = "select * from denuncia ";
@@ -38,13 +38,17 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
             conn = Conexao.getConnection();
             ps = conn.prepareStatement(INSERIR);
             ps.setInt(1, denuncia.getMunicipio().getCodigoMunicipio());
-            ps.setInt(2, denuncia.getTipoDenuncia().getCodigoTpoDenuncia());
+            ps.setInt(2, denuncia.getTipoDenuncia().getCodigoTipoDenuncia());
             ps.setString(3, denuncia.getDescricaoDenuncia());
             ps.setString(4, denuncia.getNomeCidadaoDenuncia());
             ps.setString(5, denuncia.getEmailCidadaoDenuncia());
-            ps.setDate(6, new java.sql.Date(denuncia.getDataOcorrenciaDenuncia().getTime()));
-
+            ps.setString(6, denuncia.getTelefoneCidadaoDenuncia());
+            ps.setString(7, denuncia.getDescricaoDenuncia());
+            //     ps.setDate(6, new java.sql.Date(denuncia.getDataOcorrenciaDenuncia().getTime()));
+            ps.execute();
         } catch (SQLException e) {
+            
+            System.out.println("Erro ao denunciar " + e.getLocalizedMessage());
         }
         return false;
     }
@@ -112,7 +116,7 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
     private void popularComDados(Denuncia denuncia, ResultSet rs) {
         try {
             denuncia.setCodigoDenuncia(rs.getInt(1));
-            denuncia.setNomeCidadaoDenuncia(rs.getString(6));
+            denuncia.setNomeCidadaoDenuncia(rs.getString(2));
             denuncia.setEmailCidadaoDenuncia(rs.getString(8));
             denuncia.setTelefoneCidadaoDenuncia(rs.getString(7));
             Municipio municipio = new Municipio();

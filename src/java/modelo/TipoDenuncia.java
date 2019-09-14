@@ -12,27 +12,31 @@ import java.util.Objects;
  * @author eliezer
  */
 public class TipoDenuncia {
-   private int codigoTpoDenuncia;
+   private int codigoTipoDenuncia;
    private String descricaoDenuncia;
 
     public TipoDenuncia() {
     }
 
-    public TipoDenuncia(int codigoTpoDenuncia) {
-        this.codigoTpoDenuncia = codigoTpoDenuncia;
+    public TipoDenuncia(int codigoTipoDenuncia) {
+        this.codigoTipoDenuncia = codigoTipoDenuncia;
     }
 
-    public TipoDenuncia(int codigoTpoDenuncia, String descricaoDenuncia) {
-        this.codigoTpoDenuncia = codigoTpoDenuncia;
+    public TipoDenuncia(String descricaoDenuncia) {
         this.descricaoDenuncia = descricaoDenuncia;
     }
 
-    public int getCodigoTpoDenuncia() {
-        return codigoTpoDenuncia;
+    public TipoDenuncia(int codigoTipoDenuncia, String descricaoDenuncia) {
+        this.codigoTipoDenuncia = codigoTipoDenuncia;
+        this.descricaoDenuncia = descricaoDenuncia;
     }
 
-    public void setCodigoTpoDenuncia(int codigoTpoDenuncia) {
-        this.codigoTpoDenuncia = codigoTpoDenuncia;
+    public int getCodigoTipoDenuncia() {
+        return codigoTipoDenuncia;
+    }
+
+    public void setCodigoTipoDenuncia(int codigoTipoDenuncia) {
+        this.codigoTipoDenuncia = codigoTipoDenuncia;
     }
 
     public String getDescricaoDenuncia() {
@@ -42,41 +46,7 @@ public class TipoDenuncia {
     public void setDescricaoDenuncia(String descricaoDenuncia) {
         this.descricaoDenuncia = descricaoDenuncia;
     }
-
-    @Override
-    public String toString() {
-        return "TipoDenuncia{" + "codigoTpoDenuncia=" + codigoTpoDenuncia + ", descricaoDenuncia=" + descricaoDenuncia + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + this.codigoTpoDenuncia;
-        hash = 79 * hash + Objects.hashCode(this.descricaoDenuncia);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final TipoDenuncia other = (TipoDenuncia) obj;
-        if (this.codigoTpoDenuncia != other.codigoTpoDenuncia) {
-            return false;
-        }
-        if (!Objects.equals(this.descricaoDenuncia, other.descricaoDenuncia)) {
-            return false;
-        }
-        return true;
-    }
-
    
-    
+   
+
 }

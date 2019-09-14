@@ -81,6 +81,7 @@ public class Denuncia  implements Serializable{
     public void setTipoDenuncia(TipoDenuncia tipoDenuncia) {
         this.tipoDenuncia = tipoDenuncia;
     }
+    
 
     public String getDescricaoDenuncia() {
         return descricaoDenuncia;

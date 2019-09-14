@@ -19,10 +19,10 @@ import util.Conexao;
  *
  * @author eliezer
  */
-public class TipoDenunciaDAO implements GenericoDAO<TipoDenuncia>{
-    
-        private static final String BUSCAR_TODOS = "select * from tipo_denuncia";
-    private static final String BUSCAR_POR_CODIGO= "select * from tipo_denuncia where id_tipo_denuncia=?";
+public class TipoDenunciaDAO implements GenericoDAO<TipoDenuncia> {
+
+    private static final String BUSCAR_TODOS = "select * from tipo_denuncia";
+    private static final String BUSCAR_POR_CODIGO = "select * from tipo_denuncia where id_tipo_denuncia=?";
 
     @Override
     public boolean save(TipoDenuncia t) {
@@ -41,14 +41,14 @@ public class TipoDenunciaDAO implements GenericoDAO<TipoDenuncia>{
 
     @Override
     public TipoDenuncia findById(Integer id) {
-                PreparedStatement ps = null;
+        PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
         TipoDenuncia tipoDenuncia = new TipoDenuncia(id);
         try {
             conn = Conexao.getConnection();
             ps = conn.prepareStatement(BUSCAR_POR_CODIGO);
-            ps.setInt(1, tipoDenuncia.getCodigoTpoDenuncia());
+            ps.setInt(1, tipoDenuncia.getCodigoTipoDenuncia());
             rs = ps.executeQuery();
             if (!rs.next()) {
                 System.out.println("Nao foi econtrado nem um registo com o codigo: " + id);
@@ -61,13 +61,12 @@ public class TipoDenunciaDAO implements GenericoDAO<TipoDenuncia>{
             Conexao.closeConnection((com.mysql.jdbc.Connection) conn, ps, rs);
         }
         return tipoDenuncia;
-       
+
     }
 
     @Override
     public List<TipoDenuncia> findAll() {
-        
-        
+
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -90,11 +89,11 @@ public class TipoDenunciaDAO implements GenericoDAO<TipoDenuncia>{
         }
         return tipoDenuncias;
     }
-    
-        private void popularComDados(TipoDenuncia tipoDenuncia, ResultSet rs) {
+
+    private void popularComDados(TipoDenuncia tipoDenuncia, ResultSet rs) {
         try {
-        tipoDenuncia.setCodigoTpoDenuncia(rs.getInt(0));
-        tipoDenuncia.setDescricaoDenuncia(rs.getString(2));
+            tipoDenuncia.setCodigoTipoDenuncia(rs.getInt(1));
+            tipoDenuncia.setDescricaoDenuncia(rs.getString(2));
 
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: *****" + ex.getLocalizedMessage());

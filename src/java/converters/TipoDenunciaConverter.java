@@ -38,7 +38,7 @@ public class TipoDenunciaConverter implements Converter {
 
         if (value != null) {
             TipoDenuncia tipoDenuncia = (TipoDenuncia) value;
-            return String.valueOf(tipoDenuncia.getCodigoTpoDenuncia()
+            return String.valueOf(tipoDenuncia.getCodigoTipoDenuncia()
             );
         }
         return null;

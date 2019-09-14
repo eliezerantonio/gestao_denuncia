@@ -11,6 +11,7 @@ import dao.MunicipioDAO;
 import dao.TipoDenunciaDAO;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.event.ActionEvent;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import modelo.Denuncia;
@@ -41,6 +42,19 @@ public class DenunciaMB {
     public DenunciaMB() {
     }
 
+    public String save(ActionEvent evt) {
+
+       if( denunciaDAO.save(denuncia)){
+           System.out.println(" Sucesso");
+       } else{
+           System.out.println("Err ao salvar");
+       }
+           
+       
+
+        return "funcionario_index?faces-redirect=true";
+    }
+
     public List<Denuncia> getDenuncias() {
         denuncias = denunciaDAO.findAll();
         return denuncias;
@@ -66,7 +80,7 @@ public class DenunciaMB {
     }
 
     public List<TipoDenuncia> getTipoDenuncias() {
-        tipoDenuncias= tipoDenunciaDAO.findAll();
+        tipoDenuncias = tipoDenunciaDAO.findAll();
         return tipoDenuncias;
     }
 

@@ -29,6 +29,8 @@
 
                     <b:column span="3">       
                         <b:panel title="" collapsible="false" look="primary">
+         Faça ja a sua denuncia e receba as solucoes por e-mail                   
+                            
                         </b:panel>
 
 
@@ -44,17 +46,18 @@
 
 
                                     <b:form>
+                                        
                                         <b:row>
-                                            <b:inputText placeholder="Digite aqui o seu Nome" span="8" label="Nome" colMd="7"/> 
-                                            <b:inputText placeholder="Digite o seu E-mail" type="e-mail" span="4" label="Email" colMd="8"/>
+                                            <b:inputText placeholder="Digite aqui o seu Nome" value="#{denunciaMB.denuncia.nomeCidadaoDenuncia}" span="8" label="Nome" colMd="7"/> 
+                                            <b:inputText placeholder="Digite o seu E-mail" value="#{denunciaMB.denuncia.emailCidadaoDenuncia}" type="e-mail" span="4" label="Email" colMd="8"/>
 
 
 
-                                            <b:inputText placeholder="Digite seu numero de telefone"   span="4" label="Telefone" colMd="6"/>   
+                                            <b:inputText placeholder="Digite seu numero de telefone"  value="#{denunciaMB.denuncia.telefoneCidadaoDenuncia}"  span="4" label="Telefone" colMd="6"/>   
 
                                             <b:selectOneMenu   span="4" id="tipos"  label="Tipo:" value="#{denunciaMB.denuncia.tipoDenuncia}" required="true" converter="tipoDenunciaConverter">
                                                 <f:selectItem itemLabel="Tipo de Denuncia" value="#{null}" noSelectionOption="true"/>
-                                                <f:selectItems value="#{denunciaMB.tipoDenuncias}" var="tipoDenuncia" itemValue="#{tipoDenuncia.descricaoDenuncia}" itemLabel="#{tipoDenuncia.descricaoDenuncia}"/>
+                                                <f:selectItems value="#{denunciaMB.tipoDenuncias}" var="tipoDenuncia" itemValue="#{tipoDenuncia}" itemLabel="#{tipoDenuncia.descricaoDenuncia}"/>
                                             </b:selectOneMenu>   
 
                                             <b:selectOneMenu   span="4" id="municipios"  label="Município:" value="#{denunciaMB.denuncia.municipio}" required="true" converter="municipioConverter">
@@ -62,25 +65,24 @@
                                                 <f:selectItems value="#{denunciaMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
                                             </b:selectOneMenu>  
                                         </b:row>
+
+                                        <b:inputTextarea placeholder="Digite aqui a descricao da sua denuncia" value="#{denunciaMB.denuncia.descricaoDenuncia}" label="Descrição">
+                                            <f:ajax event="keyup" render="label"/>
+                                        </b:inputTextarea>
+                                        <b:label text="" id="label"/>
+
+                                        <h:panelGrid style="float: right;" columns="2">
+
+                                            <b:commandButton look="primary btn-block" value="Denunciar"  size="lg" action="#{denunciaMB.save(evt)}" actionListener="#{denunciaMB.save(evt)}" 
+                                                             ajax="false"  /> 
+                                        </h:panelGrid>
+
                                     </b:form>
-
-
                                 </b:formGroup>
                             </b:form>
 
 
 
-
-                            <b:form>
-                                <b:inputTextarea placeholder="Digite aqui a descricao da sua denuncia" label="Descrição">
-                                    <f:ajax event="keyup" render="label"/>
-                                </b:inputTextarea>
-                                <b:label text="" id="label"/>
-                            </b:form>
-                            <h:panelGrid style="float: right;" columns="2">
-                                <b:button value="Denunciar"  look="primary" size="lg"/><b:button look="primary"  value="Cancelar" size="lg"/>
-
-                            </h:panelGrid>
 
 
                         </b:panel>
