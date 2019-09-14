@@ -26,31 +26,33 @@
                 </b:column>
 
                 <b:column span="9">  
-                    <b:panel title="Despacho Administração!"  >
+                    <b:panel title="Lista de Denuncias!"  >
 
-                        <b:dataTable value="#{despachoMB.despachos}"
+                        <b:dataTable value="#{denunciaMB.denuncias}"
                                      var="item"
                                      page-length="5"
                                      page-length-menu="5,10,20"
                                      custom-options="dom: 'lfrtiBp',buttons: ['colvis','copy','csv',{extend: 'excelHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},{extend: 'pdfHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},'print']">
                             <f:facet name="header">
                                 <tr>
-                                    <th colspan="6"> <h2 style="text-align: center;">Lista de Despachos</h2></th>
+                                    <th colspan="6"> <h2 style="text-align: center;">Lista de Denuncias</h2></th>
                                 </tr>
                                 <tr>
                                     <th>Codigo</th>
-                                    <th>Nome Funcionario</th>
-                                    <th>Codigo Denuncia</th>
-                                    <th>Estado</th>
+                                    <th>Nome Cidadao</th>
+                                    <th>E-mail Cidadao</th>
+                                    <th>Telefone Cidadao</th>
                                     <th>Data de Cadastro</th>
-                                    <th>Operacões</th>
+                                    <th>Tipo Denuncia</th>
                                 </tr>
                             </f:facet>
-                            <b:dataTableColumn value="#{item.codigoDespacho}" />
-                            <b:dataTableColumn value="#{item.funcionario.nomeFuncionario}" />
+                            <b:dataTableColumn value="#{item.denuncia.codigoDenuncia}" />
+                            <b:dataTableColumn value="#{item.denuncia.nomeCidadaoDenuncia}" />
                             <b:dataTableColumn value="#{item.denuncia.codigoDenuncia}"  order="asc" />
-                            <b:dataTableColumn value="#{item.estado.descricaoEstado}" />
-                            <b:dataTableColumn value="#{item.dataDespacho}"/>
+                            <b:dataTableColumn value="#{item.denuncia.emailCidadaoDenuncia}" />
+                            <b:dataTableColumn value="#{item.denuncia.telefoneCidadaoDenuncia}"/>
+                            <b:dataTableColumn value="#{item.denuncia.tipoDenuncia}"/>
+                            <b:dataTableColumn value="#{item.denuncia.dataRegistoDenuncia}"/>
                             <b:dataTableColumn>
 
                                 <b:commandButton icon-awesome="fa-trash" tooltip="Eliminar" action="#{despachoMB.delete()}">
