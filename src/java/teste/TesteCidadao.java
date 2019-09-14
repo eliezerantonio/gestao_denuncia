@@ -6,6 +6,7 @@
 package teste;
 
 import dao.CidadaoDAO;
+import dao.DenunciaDAO;
 import dao.FuncionarioDAO;
 import dao.MunicipioDAO;
 import java.util.ArrayList;
@@ -14,9 +15,11 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cidadao;
+import modelo.Denuncia;
 import modelo.Funcionario;
 import modelo.Municipio;
 import modelo.Provincia;
+import modelo.TipoDenuncia;
 
 /**
  *
@@ -41,21 +44,19 @@ public class TesteCidadao {
         cidadao.setSenhaCidadao("jhjh");
         cidadao.setMunicipio(municipio);
         cidadaoDAO.save(cidadao);*/
-        Municipio municipio = new Municipio();
+        Municipio municipio = new Municipio(1);
+        
         ArrayList<Municipio> lista = new ArrayList();
         MunicipioDAO municipioDAO = new MunicipioDAO();
+        TipoDenuncia tipoDenuncia = new TipoDenuncia(1);
+        Denuncia denuncia = new Denuncia(municipio,tipoDenuncia,"eliezer","eliezer@gmail.com","jsnasa","sasas");
+        DenunciaDAO denunciaDAO = new DenunciaDAO();
+        denunciaDAO.save(denuncia);
         
         
         
-        System.out.println(municipioDAO.findById(1));
         
         
-        
-        Funcionario funcionario = new Funcionario("eliezder", "1111");
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        
-        
-        funcionarioDAO.logar(funcionario);
         
         
         

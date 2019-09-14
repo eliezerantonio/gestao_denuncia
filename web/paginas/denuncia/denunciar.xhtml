@@ -72,12 +72,11 @@
                                         <b:label text="" id="label"/>
 
                                         <h:panelGrid style="float: right;" columns="2">
+                                            <b:form>
+                                                <b:commandButton look="primary btn-block" value="Denunciar"  size="lg"  action="#{denunciaMB.save(evt)}" 
+                                                                 ajax="false"  />  
 
-                                            <b:commandButton look="primary btn-block" value="Denunciar"  size="lg"  action="#{denunciaMB.save(evt)}" 
-                                                             ajax="false"  /> 
-
-                                            <b:commandButton look="primary btn-block" value="Cancelar"  size="lg"  type="reset" 
-                                                             ajax="false"  /> 
+                                            </b:form>
                                         </h:panelGrid>
 
                                     </b:form>

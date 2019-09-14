@@ -43,14 +43,9 @@ public class DenunciaMB {
     }
 
     public String save(ActionEvent evt) {
-        System.out.println("BBBBBB");
        denunciaDAO.save(denuncia);
-        System.out.println("AAAA");
-     
-           
-       
 
-        return "funcionario_index?faces-redirect=true";
+       return "funcionario_index?faces-redirect=true";
     }
 
     public List<Denuncia> getDenuncias() {

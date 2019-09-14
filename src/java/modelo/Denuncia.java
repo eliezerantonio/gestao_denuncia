@@ -44,6 +44,17 @@ public class Denuncia  implements Serializable{
         this.dataOcorrenciaDenuncia = dataOcorrenciaDenuncia;
     }
 
+    public Denuncia(Municipio municipio, TipoDenuncia tipoDenuncia, String descricaoDenuncia, String nomeCidadaoDenuncia, String emailCidadaoDenuncia, String telefoneCidadaoDenuncia) {
+        this.municipio = municipio;
+        this.tipoDenuncia = tipoDenuncia;
+        this.descricaoDenuncia = descricaoDenuncia;
+        this.nomeCidadaoDenuncia = nomeCidadaoDenuncia;
+        this.emailCidadaoDenuncia = emailCidadaoDenuncia;
+        this.telefoneCidadaoDenuncia = telefoneCidadaoDenuncia;
+    }
+    
+    
+
     public Denuncia(int codigoDenuncia, Municipio municipio, TipoDenuncia tipoDenuncia, String descricaoDenuncia, Date dataRegistoDenuncia, String nomeCidadaoDenuncia, String emailCidadaoDenuncia, String telefoneCidadaoDenuncia, Date dataNascimentoCidadaoDenuncia, Date dataOcorrenciaDenuncia) {
         this.codigoDenuncia = codigoDenuncia;
         this.municipio = municipio;
