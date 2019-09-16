@@ -24,7 +24,10 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
 
     private static final String INSERIR = "insert into denuncia(id_municipio,tipo_denuncia,descricao_denuncia,data_registro_denuncia,	nome_cidadao,telefone_cidadao, 	email_cidadao,	data_ocorrencia) values(?,?,?,now(),?,?,?,now())";
     private static final String BUSCAR_POR_CODIGO = "select * from denuncia where id_denuncia =?";
-    private static final String BUSCAR_TODOS = "select * from denuncia ";
+    private static final String BUSCAR_TODOS = "select id_denuncia, nome_cidadao,email_cidadao,telefone_cidadao, nome_municipio, descricao_denuncia_tipo,\n" +
+" data_registro_denuncia from denuncia inner join tipo_denuncia on\n" +
+"tipo_denuncia.id_tipo_denuncia=denuncia.tipo_denuncia \n" +
+"inner join municipio on municipio.id_municipio=denuncia.id_municipio";
 
     @Override
     public boolean save(Denuncia denuncia) {
@@ -114,17 +117,17 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
     private void popularComDados(Denuncia denuncia, ResultSet rs) {
         try {
             denuncia.setCodigoDenuncia(rs.getInt(1));
-            denuncia.setNomeCidadaoDenuncia(rs.getString("nome_cidadao"));
-            denuncia.setEmailCidadaoDenuncia(rs.getString("email_cidadao"));
-            denuncia.setTelefoneCidadaoDenuncia(rs.getString("telefone_cidadao"));
+            denuncia.setNomeCidadaoDenuncia(rs.getString(2));
+            denuncia.setEmailCidadaoDenuncia(rs.getString(3));
+            denuncia.setTelefoneCidadaoDenuncia(rs.getString(4));
             Municipio municipio = new Municipio();
             municipio.setNomeMunicipio(rs.getString(5));
             denuncia.setMunicipio(municipio);
             TipoDenuncia tipoDenuncia = new TipoDenuncia();
             tipoDenuncia.setDescricaoDenuncia(rs.getString(6));
             denuncia.setTipoDenuncia(tipoDenuncia);
-            denuncia.setDataRegistoDenuncia(rs.getDate("data_registro_denuncia"));
-            denuncia.setDataOcorrenciaDenuncia(rs.getDate(8));
+            denuncia.setDataRegistoDenuncia(rs.getDate(7));
+            denuncia.setDataOcorrenciaDenuncia(rs.getDate(7));
 
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: *****" + ex.getLocalizedMessage());
