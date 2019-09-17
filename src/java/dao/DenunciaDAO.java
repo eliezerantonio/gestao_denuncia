@@ -51,6 +51,9 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
 
             System.out.println("Erro ao denunciar " + e.getLocalizedMessage());
         }
+         finally {
+            Conexao.closeConnection((com.mysql.jdbc.Connection) conn,  ps);
+        }
         return false;
     }
 
@@ -127,7 +130,7 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
             tipoDenuncia.setDescricaoDenuncia(rs.getString(6));
             denuncia.setTipoDenuncia(tipoDenuncia);
             denuncia.setDataRegistoDenuncia(rs.getDate(7));
-            denuncia.setDataOcorrenciaDenuncia(rs.getDate(7));
+            denuncia.setDataOcorrenciaDenuncia(rs.getDate(8));
 
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: *****" + ex.getLocalizedMessage());

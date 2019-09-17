@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <head>
         <title>Lista de Despacho</title>
@@ -14,7 +15,7 @@
 
         <ui:include src="../../WEB-INF/menus/menu_administrativo.xhtml"/>
         <b:row>
-            <b:form>
+            <b:form> 
 
                 <b:column span="1">       
 
@@ -52,16 +53,12 @@
                             <b:dataTableColumn value="#{item.dataRegistoDenuncia}"/>
                             <b:dataTableColumn>
 
-                                <b:commandButton icon-awesome="fa-trash" tooltip="Eliminar" action="#{despachoMB.delete()}">
-                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
-                                </b:commandButton>
-                                |
-                                <b:commandButton icon-awesome="fa-pencil " tooltip="Editar" >
-                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
-                                </b:commandButton>
-                                |  <b:commandButton icon-awesome="fa-eye " tooltip="Ver detalhes" oncomplete="PF('dialogoVer').show();" >
-                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
-                                </b:commandButton> 
+
+                                <p:commandButton icon="ui-icon-zoomin" update=":ver" oncomplete="PF('dialogoVer').show();">
+                                    <f:setPropertyActionListener target="#{cidadaoMB.cidadao}" value="#{item}"/>
+                                </p:commandButton>     
+
+
                             </b:dataTableColumn>
                         </b:dataTable>
                     </b:panel>
@@ -71,7 +68,45 @@
 
 
                 </b:column>
+
             </b:form>
-        </b:row>          
+        </b:row> 
+
+        <p:dialog id="ver" widgetVar="dialogoVer" showEffect="clip" hideEffect="blind" resizable="false">
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Código: "/>
+                    <h:outputText value=""/>
+                    <p:outputLabel value="Nome: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.nomeCidadaoDenuncia}"/>
+                    <p:outputLabel value="E-mail: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.emailCidadaoDenuncia}"/>
+                    <p:outputLabel value="Telefone: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.telefoneCidadaoDenuncia}"/>
+                    <p:outputLabel value="Tipo Denuncia: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.descricaoDenuncia}"/>
+                    <p:outputLabel value="Descricao Denuncia: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.descricaoDenuncia}"/>
+                    <p:outputLabel value="DataCadastro: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.dataRegistoDenuncia}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <p:outputLabel value="Data de cadastro"/>
+                    <h:outputText value="#{item.dataRegistoDenuncia}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+
+
+
+
+
+
+
+
+
     </h:body>
 </html>
