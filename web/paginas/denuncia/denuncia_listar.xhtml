@@ -53,27 +53,20 @@
                             <b:dataTableColumn value="#{item.dataRegistoDenuncia}"  dataOrder="DD/MM/yyyy">   
                             </b:dataTableColumn>
                             <b:dataTableColumn>
-
-
-                                <p:commandButton icon="ui-icon-zoomin" update=":ver" oncomplete="PF('dialogoVer').show();">
-                                    <f:setPropertyActionListener target="#{denunciaMB.denuncia}" value="#{item}"/>
-                                </p:commandButton>     
-
-
+                                <center>
+                                    <p:commandButton icon="ui-icon-zoomin" update=":ver" oncomplete="PF('dialogoVer').show();">
+                                        <f:setPropertyActionListener target="#{denunciaMB.denuncia}" value="#{item}"/>
+                                    </p:commandButton>     
+                                </center>
                             </b:dataTableColumn>
                         </b:dataTable>  
                     </b:panel>
-
                 </b:column>
                 <b:column span="1">       
-
-
                 </b:column>
-
             </b:form>
         </b:row> 
-
-        <p:dialog id="ver" widgetVar="dialogoVer" showEffect="clip" hideEffect="blind" resizable="false">
+        <p:dialog id="ver" widgetVar="dialogoVer"  showEffect="clip" hideEffect="blind" resizable="false">
             <h:form>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Código:"/>
@@ -85,26 +78,15 @@
                     <p:outputLabel value="Telefone: "/>
                     <h:outputText value="#{denunciaMB.denuncia.telefoneCidadaoDenuncia}"/>
                     <p:outputLabel value="Tipo Denuncia: "/>
-                    <h:outputText value="#{denunciaMB.denuncia.descricaoDenuncia}"/>
+                    <h:outputText value="#{denunciaMB.denuncia.tipoDenuncia.descricaoDenuncia}"/>
                     <p:outputLabel value="Descricao Denuncia: "/>
                     <h:outputText value="#{denunciaMB.denuncia.descricaoDenuncia}"/>
                     <p:outputLabel value="DataCadastro: "/>
                     <h:outputText value="#{denunciaMB.denuncia.dataRegistoDenuncia}" >
                         <f:convertDateTime pattern="dd/MM/yyyy" />
                     </h:outputText>
-                    <p:outputLabel value="Data de cadastro"/>
-
                 </p:panelGrid>
             </h:form>
         </p:dialog>
-
-
-
-
-
-
-
-
-
     </h:body>
 </html>
