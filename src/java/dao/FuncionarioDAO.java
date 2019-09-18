@@ -135,7 +135,6 @@ public class FuncionarioDAO implements GenericoDAO<Funcionario> {
                 if (funcionario.getUsuarioFuncionario().equals(rs.getString("usuario_funcionario"))
                         && funcionario.getSenhaFuncionario().equals(rs.getString("senha_funcionario"))) {
 
-                    System.out.println("Sucesso");
                     controlo = true;
 
                 }

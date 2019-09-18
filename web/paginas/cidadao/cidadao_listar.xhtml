@@ -90,13 +90,9 @@
                         <p:commandButton icon="ui-icon-pencil" update=":editar" oncomplete="PF('dialogoEditar').show();">
                             <f:setPropertyActionListener target="#{cidadaoMB.cidadao}" value="#{item}"/>
                         </p:commandButton>
-                        <p:commandButton icon="ui-icon-zoomin" update=":ver" oncomplete="PF('dialogoVer').show();">
+                        <p:commandButton icon="ui-icon-zoomin" update=":ver"  oncomplete="PF('dialogoVer').show();">
                             <f:setPropertyActionListener target="#{cidadaoMB.cidadao}" value="#{item}"/>
                         </p:commandButton>     
-
-
-
-
 
                     </p:column>
 

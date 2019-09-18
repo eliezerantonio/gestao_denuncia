@@ -20,7 +20,7 @@
 
 
 
-   
+
         <p:panel footer="Portal de Denuncias">
 
             <h2 > Faça a sua denuncia de forma rapida e Eficiente</h2>
@@ -28,9 +28,9 @@
                 <b:form>
 
                     <b:column span="1">
-                        
+
                     </b:column>
-                 
+
                     <b:column span="10">  
                         <b:panel title="" collapsible="false" look="primary"  >
 
@@ -41,36 +41,31 @@
 
 
                                     <b:form>
-
+                                        <p:growl for="dialogo_guardar"/>
                                         <b:row>
                                             <b:inputText placeholder="Digite aqui o seu Nome" value="#{denunciaMB.denuncia.nomeCidadaoDenuncia}" span="8" label="Nome" colMd="7"/> 
                                             <b:inputText placeholder="Digite o seu E-mail" value="#{denunciaMB.denuncia.emailCidadaoDenuncia}" type="e-mail" span="4" label="Email" colMd="8"/>
-
-
-
                                             <b:inputText placeholder="Digite seu numero de telefone"  value="#{denunciaMB.denuncia.telefoneCidadaoDenuncia}"  span="4" label="Telefone" colMd="6"/>   
-
                                             <b:selectOneMenu   span="4" id="tipos"  label="Tipo:" value="#{denunciaMB.denuncia.tipoDenuncia}" required="true" converter="tipoDenunciaConverter">
                                                 <f:selectItem itemLabel="Tipo de Denuncia" value="#{null}" noSelectionOption="true"/>
                                                 <f:selectItems value="#{denunciaMB.tipoDenuncias}" var="tipoDenuncia" itemValue="#{tipoDenuncia}" itemLabel="#{tipoDenuncia.descricaoDenuncia}"/>
                                             </b:selectOneMenu>   
-
                                             <b:selectOneMenu   span="4" id="municipios"  label="Município:" value="#{denunciaMB.denuncia.municipio}" required="true" converter="municipioConverter">
                                                 <f:selectItem itemLabel=" Municipio" value="#{null}" noSelectionOption="true"/>
                                                 <f:selectItems value="#{denunciaMB.municipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nomeMunicipio}"/>
                                             </b:selectOneMenu>  
                                         </b:row>
-
                                         <b:inputTextarea placeholder="Digite aqui a descricao da sua denuncia" value="#{denunciaMB.denuncia.descricaoDenuncia}" label="Descrição">
                                             <f:ajax event="keyup" render="label"/>
                                         </b:inputTextarea>
                                         <b:label text="" id="label"/>
 
-                                        <h:panelGrid style="float: right;" columns="2">
+                                        <h:panelGrid style="float: right;">
                                             <b:form>
-                                                <b:commandButton look="primary btn-block" value="Denunciar"  size="lg"  action="#{denunciaMB.save(evt)}" 
-                                                                 ajax="false"  />  
-
+                                                <b:commandButton look="primary" value="Denunciar"    action="#{denunciaMB.save(evt)}" 
+                                                                 ajax="false"    />  
+                                                <b:commandButton look="primary" value="Limpar"    type="reset" 
+                                                                 ajax="false"    />
                                             </b:form>
                                         </h:panelGrid>
 
@@ -85,9 +80,9 @@
                         </b:panel>
 
                     </b:column>
-                    
-                       <b:column span="1">
-                        
+
+                    <b:column span="1">
+
                     </b:column>
 
 

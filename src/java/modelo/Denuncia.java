@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author eliezer
  */
 public class Denuncia  implements Serializable{
-   private Integer codigoDenuncia;
+   private int codigoDenuncia;
    private Municipio municipio;
    private TipoDenuncia tipoDenuncia;
    private String descricaoDenuncia;

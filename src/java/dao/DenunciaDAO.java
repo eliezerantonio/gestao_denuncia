@@ -27,10 +27,15 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
     private static final String BUSCAR_TODOS = "select id_denuncia, nome_cidadao,email_cidadao,telefone_cidadao, nome_municipio, descricao_denuncia_tipo,\n" +
 " data_registro_denuncia from denuncia inner join tipo_denuncia on\n" +
 "tipo_denuncia.id_tipo_denuncia=denuncia.tipo_denuncia \n" +
-"inner join municipio on municipio.id_municipio=denuncia.id_municipio";
+"inner join municipio on municipio.id_municipio=denuncia.id_municipio order by id_denuncia";
+    
+   
+    
+   
 
     @Override
     public boolean save(Denuncia denuncia) {
+              boolean controlo = false;
         PreparedStatement ps = null;
         Connection conn = null;
         if (denuncia == null) {
@@ -45,8 +50,10 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
             ps.setString(4, denuncia.getEmailCidadaoDenuncia());
             ps.setString(5, denuncia.getTelefoneCidadaoDenuncia());
             ps.setString(6, denuncia.getDescricaoDenuncia());
-            //     ps.setDate(6, new java.sql.Date(denuncia.getDataOcorrenciaDenuncia().getTime()));
             ps.execute();
+            
+             controlo = true;
+            return controlo;
         } catch (SQLException e) {
 
             System.out.println("Erro ao denunciar " + e.getLocalizedMessage());
@@ -54,7 +61,7 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
          finally {
             Conexao.closeConnection((com.mysql.jdbc.Connection) conn,  ps);
         }
-        return false;
+        return controlo;
     }
 
     @Override
@@ -119,8 +126,8 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
 
     private void popularComDados(Denuncia denuncia, ResultSet rs) {
         try {
-            denuncia.setCodigoDenuncia(rs.getInt(1));
-            denuncia.setNomeCidadaoDenuncia(rs.getString(2));
+            denuncia.setCodigoDenuncia(rs.getInt("id_denuncia"));
+            denuncia.setNomeCidadaoDenuncia(rs.getString("nome_cidadao"));
             denuncia.setEmailCidadaoDenuncia(rs.getString(3));
             denuncia.setTelefoneCidadaoDenuncia(rs.getString(4));
             Municipio municipio = new Municipio();
@@ -130,7 +137,6 @@ public class DenunciaDAO implements GenericoDAO<Denuncia> {
             tipoDenuncia.setDescricaoDenuncia(rs.getString(6));
             denuncia.setTipoDenuncia(tipoDenuncia);
             denuncia.setDataRegistoDenuncia(rs.getDate(7));
-            denuncia.setDataOcorrenciaDenuncia(rs.getDate(8));
 
         } catch (SQLException ex) {
             System.err.println("Erro ao carregar dados: *****" + ex.getLocalizedMessage());
