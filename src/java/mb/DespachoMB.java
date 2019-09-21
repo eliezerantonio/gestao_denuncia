@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.Denuncia;
@@ -28,7 +29,7 @@ import modelo.Funcionario;
  * @author eliezer
  */
 @Named(value = "despachoMB")
-@Dependent
+@SessionScoped
 public class DespachoMB implements Serializable {
 
     /**
@@ -38,29 +39,37 @@ public class DespachoMB implements Serializable {
     }
 
     private Despacho despacho = new Despacho();
-    private final DespachoDAO despachoDAO = new DespachoDAO();
+    private DespachoDAO despachoDAO = new DespachoDAO();
 
     private List<Despacho> despachos = new ArrayList<>();
     private List<Denuncia> denuncias = new ArrayList<>();
     private List<Funcionario> funcionarios = new ArrayList<>();
     private List<Estado> estados = new ArrayList<>();
 
-    public String guardar(ActionEvent evt) {
+    public void guardar(ActionEvent evt) {
 
         try {
 
-            despachoDAO.save(despacho);
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvado com sucesso", "Guardar");
-            facesContext.addMessage("dialogo_guardar", facesMessage);
+            if(despachoDAO.save(despacho)){
+                  FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Despachado  com sucesso", "Despachar");
+            facesContext.addMessage("dialogo_despachar", facesMessage);
+
+            }
+            else{
+                   FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro ao despachar", "Despachar");
+            facesContext.addMessage("dialogo_despachar", facesMessage);
+                
+            }
+         
 
         } catch (Exception e) {
             FacesContext facesContext2 = FacesContext.getCurrentInstance();
             FacesMessage facesMessage2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar" + e.getLocalizedMessage(), "Guardar");
-            facesContext2.addMessage("dialogo_guardar", facesMessage2);
+            facesContext2.addMessage("dialogo_despachar", facesMessage2);
 
         }
-        return "despacho_listar_1?faces-redirect=true";
     }
 
     public String delete() {
@@ -104,6 +113,8 @@ public class DespachoMB implements Serializable {
         return estados;
     }
 
+    
+    
     public String entrar() {
         
        

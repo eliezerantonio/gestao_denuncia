@@ -3,16 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/cidadao/cidadao_listar.xhtml</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/WEB-INF/menus/menu_base_publico.xhtml</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/cidadao/cidadao_listar_sem_template.xhtml</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/denuncia/denuncia_consultar.xhtml</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/src/java/dao/DenunciaDAO.java</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/denuncia/denuncia_listar.xhtml</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/WEB-INF/menus/menu_administrativo.xhtml</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/despacho/despacho_cadastrar.xhtml</file>
             <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/denuncia/denunciar.xhtml</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/src/java/dao/FuncionarioDAO.java</file>
-            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/src/java/mb/DenunciaMB.java</file>
         </group>
     </open-files>
 </project-private>

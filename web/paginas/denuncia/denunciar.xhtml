@@ -6,6 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
+      <!--  xmlns:o="http://omnifaces.org/ui">--> 
     <h:head>
         <title> 
             Portal de Denuncias</title>
@@ -14,6 +15,10 @@
     <h:body>
         <ui:include src="../../WEB-INF/menus/menu_base_publico.xhtml"/>
 
+        
+       <!-- <f:metadata>
+            <o:
+        </f:metadata> -->
 
 
 
@@ -62,7 +67,7 @@
                                         </b:inputTextarea>
                                         <b:label text="" id="label"/>
 
-                                        <h:panelGrid style="float: right;">
+                                        <h:panelGrid style="float: right" >
                                             <b:form>
                                                 <b:commandButton look="primary" value="Denunciar"    action="#{denunciaMB.save(evt)}" 
                                                                  ajax="false"    />  
@@ -74,32 +79,13 @@
                                     </b:form>
                                 </b:formGroup>
                             </b:form>
-
-
-
-
-
                         </b:panel>
-
                     </b:column>
-
                     <b:column span="1">
-
                     </b:column>
-
-
-
                 </b:form>
             </b:row>          
-
-
-
-
-
-
-
         </p:panel> 
-
         <br/>
     </h:body>
 </html>

@@ -46,8 +46,20 @@ public class DenunciaMB implements Serializable {
 
     public DenunciaMB() {
     }
+    
+    public void inicializar(){
+    
+    if(this.denuncia == null){
+        limpar();
+    }
+}
+    public void limpar(){
+        denuncia = new Denuncia();
+    }
 
     public void save(ActionEvent evt) {
+        
+         limpar();
 
         if (denunciaDAO.save(denuncia)) {
             FacesContext facesContext = FacesContext.getCurrentInstance();

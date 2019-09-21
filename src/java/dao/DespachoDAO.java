@@ -40,6 +40,8 @@ public class DespachoDAO implements GenericoDAO<Despacho> {
     
     @Override
     public boolean  save(Despacho despacho) {
+        boolean controlo;
+        controlo=false;
         
         PreparedStatement ps = null;
         Connection conn = null;
@@ -54,13 +56,16 @@ public class DespachoDAO implements GenericoDAO<Despacho> {
             ps.setInt(2, despacho.getDenuncia().getCodigoDenuncia());
             ps.setInt(3, despacho.getEstado().getCodigoEstado());
             ps.execute();
+            controlo = true;
+            return controlo;
+            
         } catch (SQLException e) {
             System.out.println("Erro ao inserir os dados : " + e.getLocalizedMessage());
             
         } finally {
             Conexao.closeConnection((com.mysql.jdbc.Connection) conn, ps);
         }
-        return false;
+        return controlo;
         
     }
     

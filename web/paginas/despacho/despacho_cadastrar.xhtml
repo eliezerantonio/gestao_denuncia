@@ -3,40 +3,73 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Cadastro de Despacho</title>
+
     </h:head>
     <h:body>
         <ui:include src="../../WEB-INF/menus/menu_administrativo.xhtml"/>
 
         <b:row>
             <b:form>
-
-                <b:column span="3">       
-                    <b:panel title="Try" collapsible="false" look="default">
-                    </b:panel>
+   <p:growl for="dialogo_despachar"/>
+                <b:column span="1">       
 
 
                 </b:column>
 
-                <b:column span="9">  
-                    <b:panel  collapsible="false"  >
+                <b:column span="10">  
+                    <b:panel  collapsible="false" title="" look="primary" >
 
 
-                        <b:form inline="true" >
 
-                            <!-- <b:inputText placeholder="Text" span="2" label="  Codigo Denuncia" >
-                              
-                                
-                             </b:inputText>
-                                  
-                             <b:inputText placeholder="Text" span="8" label="Nome Funcionario">      
-                            </b:inputText>    --> 
-                        </b:form>
+                        <b:row>
+                          <!--  <b:selectOneMenu   span="8" id="tiposs"  label="Nome Funcionario"  required="true" converter="funcionarioConverter" disabled="true">
+                                <f:selectItems value="#{despachoMB.funcionarios}" var="funcionario" itemValue="#{funcionario}" itemLabel="#{funcionario.nomeFuncionario}"/>
+                            </b:selectOneMenu> -->
+                          <b:selectOneMenu   span="8" id="funcionarios"  label="Nome Funcionario " value="#{despachoMB.despacho.funcionario}" required="true" converter="funcionarioConverter">
+                                <f:selectItem itemLabel=" FUncionairo" value="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{despachoMB.funcionarios}" var="funcionario" itemValue="#{funcionario}" itemLabel="#{funcionario.nomeFuncionario}"/>
+                            </b:selectOneMenu> 
+                            <b:selectOneMenu   span="4" id="denuncias"  label="Codigo " value="#{despachoMB.despacho.denuncia}" required="true" converter="denunciaConverter">
+                                <f:selectItem itemLabel=" Selecione o codigo" value="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{despachoMB.denuncias}" var="denuncia" itemValue="#{denuncia}" itemLabel="#{denuncia.nomeCidadaoDenuncia}"/>
+                            </b:selectOneMenu> 
+
+                            <b:selectOneMenu   span="4" id="tipos"  label="Estado" value="#{despachoMB.despacho.estado}" required="true" converter="estadoConverter">
+                                <f:selectItem itemLabel="Estado da denuncia" value="#{null}" noSelectionOption="true"/>
+                                <f:selectItems value="#{despachoMB.estados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.descricaoEstado}"/>
+                            </b:selectOneMenu>   
+
+
+                        </b:row>
+
+                        <b:row>
+
+                            <h:panelGrid style="float: right" >
+                                <b:form>
+                                    <b:commandButton look="primary" value="Despachar"    action="#{despachoMB.guardar(evt)}" 
+                                                     ajax="false"    />  
+                                    <b:commandButton look="primary" value="Limpar"    type="reset" 
+                                                     ajax="false"    />
+                                </b:form>
+                            </h:panelGrid>
+
+
+                        </b:row>
+
                     </b:panel>
 
                 </b:column>
+
+                <b:column span="1">       
+
+
+                </b:column>
+
 
             </b:form>
         </b:row>          
