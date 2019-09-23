@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/imagen/depositphotos_94876712-stock-photo-folder-for-documents-folder-for.jpg</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/imagen/depositphotos_54469921-stock-photo-folders-for-documents-3d-images.jpg</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/src/java/converters/FuncionarioConverter.java</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/src/java/dao/DespachoDAO.java</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/funcionario/funcionario_denuncia.xhtml</file>
             <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/despacho/despacho_cadastrar.xhtml</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/funcionario/funcionario_despacho.xhtml</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/src/java/mb/DespachoMB.java</file>
             <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/denuncia/denunciar.xhtml</file>
+            <file>file:/home/eliezer/NetBeansProjects/gestao_denuncia/web/paginas/funcionario/funcionario_index.xhtml</file>
         </group>
     </open-files>
 </project-private>

@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <head>
         <title>Lista de Despacho</title>
@@ -50,16 +51,13 @@
                             <b:dataTableColumn value="#{item.dataDespacho}"/>
                             <b:dataTableColumn>
 
-                                <b:commandButton icon-awesome="fa-trash" tooltip="Eliminar" action="#{despachoMB.delete()}">
-                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
-                                </b:commandButton>
-                                |
+                              
                                 <b:commandButton icon-awesome="fa-pencil " tooltip="Editar" >
                                     <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
                                 </b:commandButton>
-                                |  <b:commandButton icon-awesome="fa-eye " tooltip="Ver detalhes" oncomplete="PF('dialogoVer').show();" >
-                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
-                                </b:commandButton> 
+                                |  <p:commandButton icon="ui-icon-zoomin" update=":ver" oncomplete="PF('dialogoVer').show();">
+                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="#{item}"/>
+                                    </p:commandButton>  
                             </b:dataTableColumn>
                         </b:dataTable>
                     </b:panel>
@@ -73,6 +71,26 @@
 
 
             </b:form>
-        </b:row>          
+        </b:row>      
+                <p:dialog id="ver" widgetVar="dialogoVer"  showEffect="clip" hideEffect="blind" resizable="false">
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Código:"/>
+                    <h:outputText value="#{despachoMB.despacho.codigoDespacho}"/>
+                    <p:outputLabel value="Nome Funcionario: "/>
+                    <h:outputText value="#{despachoMB.despacho.funcionario.nomeFuncionario}"/>
+                    <p:outputLabel value="Nome Cidadao: "/>
+                    <h:outputText value="#{despachoMB.despacho.denuncia.nomeCidadaoDenuncia}"/>
+                    <p:outputLabel value="Tipo Denuncia"/>
+                    <h:outputText value="#{despachoMB.despacho.denuncia.tipoDenuncia}"/>
+                    <p:outputLabel value="Estado: "/>
+                    <h:outputText value="#{despachoMB.despacho.estado.descricaoEstado}"/>
+                    <p:outputLabel value="Data despacho: "/>
+                    <h:outputText value="#{despachoMB.despacho.dataDespacho}"/>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+        
+        
     </h:body>
 </html>

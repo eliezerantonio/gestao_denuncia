@@ -73,7 +73,28 @@
 
             </b:form>
         </b:row>          
-
+ <p:dialog id="ver" widgetVar="dialogoVer"  showEffect="clip" hideEffect="blind" resizable="false">
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Código:"/>
+                    <h:outputText value="#{denunciaMB.denuncia.codigoDenuncia}"/>
+                    <p:outputLabel value="Nome: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.nomeCidadaoDenuncia}"/>
+                    <p:outputLabel value="E-mail: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.emailCidadaoDenuncia}"/>
+                    <p:outputLabel value="Telefone: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.telefoneCidadaoDenuncia}"/>
+                    <p:outputLabel value="Tipo Denuncia: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.tipoDenuncia.descricaoDenuncia}"/>
+                    <p:outputLabel value="Descricao Denuncia: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.descricaoDenuncia}"/>
+                    <p:outputLabel value="DataCadastro: "/>
+                    <h:outputText value="#{denunciaMB.denuncia.dataRegistoDenuncia}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
 
 
     </h:body>

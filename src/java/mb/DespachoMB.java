@@ -72,11 +72,10 @@ public class DespachoMB implements Serializable {
         }
     }
 
-    public String delete() {
+    public  void delete() {
 
         despachoDAO.delete(despacho);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminar\t", "\tDados Eliminados com sucesso!"));
-        return "despacho_listar_1?faces-redirect=true";
     }
 
     public Despacho getDespacho() {
