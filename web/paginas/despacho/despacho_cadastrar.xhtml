@@ -23,9 +23,6 @@
 
                 <b:column span="10">  
                     <b:panel  collapsible="false" title="" look="primary" >
-
-
-
                         <b:row>
                           <!--  <b:selectOneMenu   span="8" id="tiposs"  label="Nome Funcionario"  required="true" converter="funcionarioConverter" disabled="true">
                                 <f:selectItems value="#{despachoMB.funcionarios}" var="funcionario" itemValue="#{funcionario}" itemLabel="#{funcionario.nomeFuncionario}"/>
@@ -43,12 +40,8 @@
                                 <f:selectItem itemLabel="Estado da denuncia" value="#{null}" noSelectionOption="true"/>
                                 <f:selectItems value="#{despachoMB.estados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.descricaoEstado}"/>
                             </b:selectOneMenu>   
-
-
                         </b:row>
-
                         <b:row>
-
                             <h:panelGrid style="float: right" >
                                 <b:form>
                                     <b:commandButton look="primary" value="Despachar"    action="#{despachoMB.guardar(evt)}" 
@@ -57,20 +50,11 @@
                                                      ajax="false"    />
                                 </b:form>
                             </h:panelGrid>
-
-
                         </b:row>
-
                     </b:panel>
-
                 </b:column>
-
                 <b:column span="1">       
-
-
                 </b:column>
-
-
             </b:form>
         </b:row>          
  <p:dialog id="ver" widgetVar="dialogoVer"  showEffect="clip" hideEffect="blind" resizable="false">

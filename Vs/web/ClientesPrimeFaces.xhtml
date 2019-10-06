@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+  <meta charset="UTF-8"/>
+</h:head>
+<h:body>
+	<h:form>
+	
+		<p:panelGrid layout="grid" columns="4" styleClass="ui-fluid">
+			<f:facet name="header">Cadastro de clientes</f:facet>
+			
+			<p:outputLabel value="Nome" />
+			<p:inputText value="#{clienteController.cliente.nome}"/>
+			
+			<p:outputLabel value="E-mail" />
+			<p:inputText value="#{clienteController.cliente.email}"/>
+		</p:panelGrid>
+		
+		<p:commandButton value="Adicionar"  action="#{clienteController.adicionar}"
+			update="@form" style="margin: 15px 0" />
+				
+		<p:dataTable value="#{clienteController.todosClientes}" var="cliente">
+			<p:column headerText="Nome">
+				<h:outputText value="#{cliente.nome}" />
+			</p:column>
+			<p:column headerText="E-mail">
+				<h:outputText value="#{cliente.email}" />
+			</p:column>
+		</p:dataTable>
+	
+	</h:form>
+
+</h:body>
+</html>

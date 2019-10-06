@@ -59,7 +59,7 @@ public class DenunciaMB implements Serializable {
 
     public void save(ActionEvent evt) {
         
-         limpar();
+      
 
         if (denunciaDAO.save(denuncia)) {
             FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -80,6 +80,11 @@ public class DenunciaMB implements Serializable {
         denuncias = denunciaDAO.findAll();
         return denuncias;
 
+    }
+    
+    public Denuncia buscarPorId(Integer codigo){
+        denuncias=(List<Denuncia>) denunciaDAO.findById(codigo);
+        return this.denuncia;
     }
 
     public List<Estado> getEstados() {

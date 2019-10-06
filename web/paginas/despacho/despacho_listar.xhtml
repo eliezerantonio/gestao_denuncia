@@ -10,19 +10,12 @@
     <head>
         <title>Lista de Despacho</title>
     </head>
-
     <h:body>
-
         <ui:include src="../../WEB-INF/menus/menu_administrativo.xhtml"/>
         <b:row>
             <b:form>
-
                 <b:column span="1">       
-
-
-
                 </b:column>
-
                 <b:column span="10">  
                     <b:panel title="Despacho Administração!"  look="primary" >
 
@@ -33,7 +26,7 @@
                                      custom-options="dom: 'lfrtiBp',buttons: ['colvis','copy','csv',{extend: 'excelHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},{extend: 'pdfHtml5', exportOptions: {columns: [ 0, 1, 2, 3, 5 ]}},'print']">
                             <f:facet name="header">
                                 <tr>
-                                    <th colspan="6"> <h2 style="text-align: center;">Lista de Despachos</h2></th>
+                                    <th colspan="6"> <h2 style="text-align: left;">Lista de Despachos</h2></th>
                                 </tr>
                                 <tr>
                                     <th>Codigo</th>
@@ -50,47 +43,58 @@
                             <b:dataTableColumn value="#{item.estado.descricaoEstado}" />
                             <b:dataTableColumn value="#{item.dataDespacho}"/>
                             <b:dataTableColumn>
-
-                              
-                                <b:commandButton icon-awesome="fa-pencil " tooltip="Editar" >
-                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="item"/>                            
-                                </b:commandButton>
-                                |  <p:commandButton icon="ui-icon-zoomin" update=":ver" oncomplete="PF('dialogoVer').show();">
-                                    <f:setPropertyActionListener target="#{despachoMB.despacho}" value="#{item}"/>
-                                    </p:commandButton>  
+                                <center>
+                                    <b:commandButton icon-awesome="fa-pencil " update=":editar" oncomplete="PF('dialogoEditar').show();">
+                                        <f:setPropertyActionListener target="#{despachoMB.despacho}" value="#{item}"  />                            
+                                    </b:commandButton>
+                                    |  <b:commandButton  icon-awesome="fa-eye " update=":ver" oncomplete="PF('dialogoVer').show();">
+                                        <f:setPropertyActionListener target="#{despachoMB.despacho}" value="#{item}"/>
+                                    </b:commandButton> 
+                                </center>
                             </b:dataTableColumn>
                         </b:dataTable>
                     </b:panel>
-
                 </b:column>
                 <b:column span="1">       
-
-
-
                 </b:column>
-
-
             </b:form>
         </b:row>      
-                <p:dialog id="ver" widgetVar="dialogoVer"  showEffect="clip" hideEffect="blind" resizable="false">
+        <p:dialog id="editar" widgetVar="dialogoEditar" showEffect="clip" hideEffect="blind" style="width: 00px; height: 150px" resizable="false">
+            <p:growl for="dialogo_editar"/>
+            <h:form enctype="multipart/form-data">
+                <h:inputHidden value="#{despachoMB.despacho.codigoDespacho}"/>
+                <p:panelGrid columns="2">
+                    <h:panelGrid columns="2">
+                        <b:selectOneMenu   span="10" id="funcionarios"  label="Funcionario " value="#{despachoMB.despacho.funcionario}" required="true" converter="funcionarioConverter">
+                            <f:selectItem itemLabel=" Funcionairo" value="#{null}" noSelectionOption="true"/>
+                            <f:selectItems value="#{despachoMB.funcionarios}" var="funcionario" itemValue="#{funcionario}" itemLabel="#{funcionario.nomeFuncionario}"/>
+                        </b:selectOneMenu> 
+
+                        <b:selectOneMenu   span="10" id="tipos"  label="Estado" value="#{despachoMB.despacho.estado}" required="true" converter="estadoConverter">
+                            <f:selectItem itemLabel="Estado da denuncia" value="#{null}" noSelectionOption="true"/>
+                            <f:selectItems value="#{despachoMB.estados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.descricaoEstado}"/>
+                        </b:selectOneMenu>   
+                        <p:outputLabel value="Data despacho: "/>
+
+                        <p:calendar id="dataCidadao" value="#{despachoMB.despacho.dataDespacho}" pattern="dd/MM/yyyy" title="DataContacto" locale="pt" mode="popup"
+                                    showOn="button" navigator="true" />
+                    </h:panelGrid>
+                </p:panelGrid>
+                <br></br>
+                <p:commandButton value="Alterar" action="#{despachoMB.editar(evt)}" ajax="false"/>
+            </h:form>
+        </p:dialog>
+        <p:dialog id="ver" widgetVar="dialogoVer"  showEffect="clip" hideEffect="blind" resizable="false">
             <h:form>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Código:"/>
                     <h:outputText value="#{despachoMB.despacho.codigoDespacho}"/>
                     <p:outputLabel value="Nome Funcionario: "/>
                     <h:outputText value="#{despachoMB.despacho.funcionario.nomeFuncionario}"/>
-                    <p:outputLabel value="Nome Cidadao: "/>
-                    <h:outputText value="#{despachoMB.despacho.denuncia.nomeCidadaoDenuncia}"/>
-                    <p:outputLabel value="Tipo Denuncia"/>
-                    <h:outputText value="#{despachoMB.despacho.denuncia.tipoDenuncia}"/>
                     <p:outputLabel value="Estado: "/>
                     <h:outputText value="#{despachoMB.despacho.estado.descricaoEstado}"/>
-                    <p:outputLabel value="Data despacho: "/>
-                    <h:outputText value="#{despachoMB.despacho.dataDespacho}"/>
                 </p:panelGrid>
             </h:form>
         </p:dialog>
-        
-        
     </h:body>
 </html>

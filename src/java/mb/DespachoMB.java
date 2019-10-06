@@ -71,6 +71,31 @@ public class DespachoMB implements Serializable {
 
         }
     }
+    public void editar(ActionEvent evt) {
+
+        try {
+
+            if(despachoDAO.update(despacho)){
+                  FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso", "Despachar");
+            facesContext.addMessage("dialogo_editar", facesMessage);
+
+            }
+            else{
+                   FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro ao Atualizae", "Despachar");
+            facesContext.addMessage("dialogo_editar", facesMessage);
+                
+            }
+         
+
+        } catch (Exception e) {
+            FacesContext facesContext2 = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar" + e.getLocalizedMessage(), "Guardar");
+            facesContext2.addMessage("dialogo_despachar", facesMessage2);
+
+        }
+    }
 
     public  void delete() {
 

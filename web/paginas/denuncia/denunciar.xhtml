@@ -69,9 +69,9 @@
 
                                         <h:panelGrid style="float: right" >
                                             <b:form>
-                                                <b:commandButton look="primary" value="Denunciar"    action="#{denunciaMB.save(evt)}" 
-                                                                 ajax="false"    />  
-                                                <b:commandButton look="primary" value="Limpar"    type="reset" 
+                                                <b:commandButton look="primary" value="Denunciar" update="@form" action="#{denunciaMB.save(evt)}" 
+                                                                 ajax="true"    />  
+                                                <b:commandButton look="primary" value="Limpar"   
                                                                  ajax="false"    />
                                             </b:form>
                                         </h:panelGrid>

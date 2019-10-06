@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:body>
 
@@ -28,12 +29,17 @@
 
 
 
-                        <b:formGroup>
+                        <b:formGroup >
                             <p>*Informe o Codigo da sua Denuncia</p>
-                            <b:inputText placeholder="informe o codigo da denuncia" span="6">
+                            <b:inputText placeholder="informe o codigo da denuncia" span="6" >
                                 <f:facet name="append">
 
-                                    <b:commandButton iconAwesome="fa-search" />
+                                    <b:form>  
+
+                                        <b:commandButton icon-awesome="fa-search "  action="#{denunciaMB.buscarPorId(codigo)}" oncomplete="PF('dialogoEditar').show();">
+                                    </b:commandButton>
+
+                                    </b:form>
                                 </f:facet>
                             </b:inputText>
 
@@ -42,18 +48,22 @@
 
 
                     </b:panel>
-                    <b/>
-                    <b/>
-                    <b/>
-                    <b/>
-                    <b/>
+
                 </b:column>
                 <b:column span="1">       
 
 
 
                 </b:column>
+
+               
             </h:form>
+             <p:dialog id="editar" widgetVar="dialogoEditar" showEffect="clip" hideEffect="blind" style="width: 00px; height: 150px" resizable="false">
+                    <h:form enctype="multipart/form-data">
+                      
+
+                    </h:form>
+                </p:dialog>
         </b:row>
 
     </h:body>
